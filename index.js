@@ -85,17 +85,18 @@ async function display_game_menu(active_channel){
 	await display_embed.react("🪙")
 	await display_embed.react("#️⃣")
 	//
-	display_embed.awaitReactions((reaction, user) => user.id == display_embed.author.id && (reaction.emoji.name == '🪙' || reaction.emoji.name == '#️⃣'),
-                            { max: 1, time: 30000 }).then(collected => {
-                                    	if (collected.first().emoji.name == '🪙') {
-                                            choice = 'coinflip';
-                                    	}
-                                    	else if (collected.first().emoji.name == '#️⃣') {
-                                            choice = 'tictactoe';
-					}
-                            }).catch(() => {
-                                    display_embed.reply('No reaction after 30 seconds, operation canceled');
-                            });
+	display_embed.awaitReactions((reaction, user) => user.id == display_embed.author.id && (reaction.emoji.name == '🪙' || reaction.emoji.name == '#️⃣'), { max: 1, time: 30000 }).then(collected => {
+       		switch (reaction.emoji.name) {
+            		case "🪙":
+				choice = 'coinflip';
+				break
+			case "#️⃣":
+				choice = 'tictactoe';
+				break
+			};
+        }).catch(() => {
+                display_embed.reply('No reaction after 30 seconds, operation canceled');
+        });
 	//
 	/*
 	display_embed.awaitReactions()
