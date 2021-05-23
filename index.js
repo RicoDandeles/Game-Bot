@@ -47,7 +47,6 @@ client.on("message", async msg => {
     console.log('+start command input');
     msg.delete();
     var choice = display_game_menu(active_channel);
-      
   }
   else {
       console.log('command not found');
@@ -71,12 +70,12 @@ function generateSerial() {
 
 function display_game_menu(){
     var choice = 'tictactoe';
+    console.log('choice made');
     return choice;
 }
 
 function tictactoe(active_channel){
     console.log('tictactoe initializing');
-    const channel = active_channel;
     const one = ':white_large_square:';
     const two = ':white_large_square:';
     const three = ':white_large_square:';
@@ -99,7 +98,7 @@ function tictactoe(active_channel){
 	    .setTimestamp()
 	    .setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
 
-    channel.send(tictactoe_embed);
+    active_channel.send(tictactoe_embed);
 }
 
 client.login(discordtoken); 
