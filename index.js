@@ -59,12 +59,12 @@ function generateSerial() {
     return randomSerial;
 }
 
-display_game_menu(){
+function display_game_menu(){
     var choice = 'tictactoe';
     return choice;
 }
 
-tictactoe(active_channel){
+function tictactoe(active_channel){
     const channel = active_channel;
     const one = ':white_large_square:';
     const two = ':white_large_square:';
