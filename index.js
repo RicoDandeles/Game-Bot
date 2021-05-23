@@ -84,7 +84,20 @@ async function display_game_menu(active_channel){
     	display_embed = await active_channel.send(display_embed)
 	await display_embed.react("🪙")
 	await display_embed.react("#️⃣")
-
+	//
+	display_embed.awaitReactions((reaction, user) => user.id != display_embed.author.id && (reaction.emoji.name == '🪙'),
+                            { max: 1, time: 30000 }).then(collected => {
+                                    	if (collected.first().emoji.name == '🪙') {
+                                            choice = 'coinflip';
+                                    	}
+                                    	else if (collected.first().emoji.name == '#️⃣') {
+                                            choice = 'tictactoe';
+					}
+                            }).catch(() => {
+                                    display_embed.reply('No reaction after 30 seconds, operation canceled');
+                            });
+	//
+	/*
 	display_embed.awaitReactions()
 		.then(collected => {
        			const reaction = collected.first();
@@ -97,6 +110,7 @@ async function display_game_menu(active_channel){
 					break
 			};
 		});
+	*/
 	if (choice == 'coinflip'){
 		console.log('coinflip chosen');
 		//coinflip(active_channel);
