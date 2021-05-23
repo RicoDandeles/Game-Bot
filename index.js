@@ -90,9 +90,11 @@ async function display_game_menu(active_channel){
 			switch (reaction.emoji.name) {
             			case "🪙":
 					choice = 'coinflip';
+					break
 				case "#️⃣":
 					choice = 'tictactoe';
 					break
+			};
 	if (choice == 'coinflip'){
 		console.log('coinflip chosen');
 		//coinflip(active_channel);
