@@ -84,7 +84,8 @@ async function display_game_menu(active_channel){
     	display_embed = await active_channel.send(display_embed)
 	await display_embed.react("🪙")
 	await display_embed.react("#️⃣")
-	await display_embed.awaitReactions()
+
+	display_embed.awaitReactions()
 		.then(collected => {
        			const reaction = collected.first();
 			switch (reaction.emoji.name) {
