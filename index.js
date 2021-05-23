@@ -141,6 +141,7 @@ function coinflip(active_channel){
               	message.react("👑")
               	message.react("🍑")
 	});
+	
 	if (side == 1){
 		tictactoe_embed = new Discord.MessageEmbed()
 	    		.setColor('#0099ff')
@@ -154,7 +155,9 @@ function coinflip(active_channel){
 	    		.setTimestamp()
 	    		.setFooter('The Social Casino', 'https://i.imgur.com/PIIl7yp.jpeg')
 			.attachFiles(["https://tenor.com/view/heads-coinflip-flip-a-coin-coin-coins-gif-21479854"]);
-		msg.edit(tictactoe_embed);
+		setTimeout(function() {
+			msg.edit(tictactoe_embed)
+		}, 2000);
 	}
 	else if (side == 2){
 		tictactoe_embed = new Discord.MessageEmbed()
@@ -169,7 +172,9 @@ function coinflip(active_channel){
 	    		.setTimestamp()
 	    		.setFooter('The Social Casino', 'https://i.imgur.com/PIIl7yp.jpeg')
 			.attachFiles(["https://tenor.com/view/coins-tails-coin-flip-a-coin-coinflip-gif-21479856"]);
-		msg.edit(tictactoe_embed);
+		setTimeout(function() {
+			msg.edit(tictactoe_embed)
+		}, 2000);
 	}
 }
 
