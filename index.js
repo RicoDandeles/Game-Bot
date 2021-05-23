@@ -85,7 +85,7 @@ async function display_game_menu(active_channel){
 	await display_embed.react("🪙")
 	await display_embed.react("#️⃣")
 	//
-	display_embed.awaitReactions((reaction, user) => user.id == display_embed.author.id && (reaction.emoji.name == '🪙' || reaction.emoji.name == '#️⃣'), { max: 1 })
+	display_embed.awaitReactions((reaction) => (reaction.emoji.name == '🪙' || reaction.emoji.name == '#️⃣'), { max: 1 })
 		.then(collected => {
        			switch (reaction.emoji.name) {
             			case "🪙":
