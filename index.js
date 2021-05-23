@@ -96,7 +96,7 @@ function tictactoe(active_channel){
     const tictactoe_embed = new Discord.MessageEmbed()
 	    .setColor('#0099ff')
 	    .setTitle('Tic Tac Toe')
-	    .setDescription('Tic-tac-toe, is a game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a diagonal, horizontal, or vertical row is the winner.')
+	    .setDescription('**@Player 1**' + ' VS ' + '**@Player 2**')
 	    .setThumbnail('https://i.imgur.com/an20jm9.png')
 	    .addFields(
 		    { name: 'Board', value: one + ' ' + two + ' ' + three + '\n' + four + ' ' + five + ' ' + six + '\n' + seven + ' ' + eight + ' ' + nine },
