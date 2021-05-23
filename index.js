@@ -157,7 +157,7 @@ function coinflip_winner(msg, side){
 		    		{ name: 'Tails🍑', value: '@ Player #', inline: true},
 				{ name: 'Heads👑', value: '@Heads WINS!'},
 	    		)
-			.setImage("https://tenor.com/view/heads-coinflip-flip-a-coin-coin-coins-gif-21479854")
+			.setImage("https://i.imgur.com/Vo3B0BK.jpg")
 	    		.setTimestamp()
 	    		.setFooter('The Social Casino', 'https://i.imgur.com/PIIl7yp.jpeg')
 		setTimeout(function() {
@@ -174,7 +174,7 @@ function coinflip_winner(msg, side){
 		    		{ name: 'Tails🍑', value: '@ Player #', inline: true},
 				{ name: 'Heads👑', value: '@Tails WINS!'},
 	    		)
-			.setImage("https://tenor.com/view/coins-tails-coin-flip-a-coin-coinflip-gif-21479856")
+			.setImage("https://i.imgur.com/hcvnXJR.jpg")
 	    		.setTimestamp()
 	    		.setFooter('The Social Casino', 'https://i.imgur.com/PIIl7yp.jpeg')
 		setTimeout(function() {
