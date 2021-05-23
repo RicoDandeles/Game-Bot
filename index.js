@@ -70,6 +70,7 @@ function generateSerial() {
 
 async function display_game_menu(active_channel){
     	var choice;
+	var reaction;
 	var display_embed = new Discord.MessageEmbed()
 	    .setColor('#0099ff')
 	    .setTitle('Game Menu')
@@ -85,7 +86,7 @@ async function display_game_menu(active_channel){
 	await display_embed.react("🪙")
 	await display_embed.react("#️⃣")
 	//
-	display_embed.awaitReactions((reaction) => (reaction.emoji.name == '🪙' || reaction.emoji.name == '#️⃣'), { max: 1 })
+	display_embed.awaitReactions(reaction = reaction.emoji.name, { max: 1})
        			switch (reaction.emoji.name) {
             			case "🪙":
 					console.log('coinflip chosen');
