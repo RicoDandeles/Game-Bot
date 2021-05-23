@@ -47,6 +47,13 @@ client.on("message", async msg => {
     console.log('+start command input');
     msg.delete();
     var choice = display_game_menu(active_channel);
+    	if (choice == 'tictactoe'){
+	    tictactoe(active_channel);
+	}
+	else{
+		console.log('no valid choice made');
+		return;
+	}
   }
   else {
       console.log('command not found');
@@ -68,7 +75,7 @@ function generateSerial() {
     return randomSerial;
 }
 
-function display_game_menu(){
+function display_game_menu(active_channel){
     var choice = 'tictactoe';
     console.log('choice made');
     return choice;
