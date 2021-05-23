@@ -30,11 +30,10 @@ client.on("ready", () => {
 
 client.on("message", async msg => {
   console.log('Message recieved');
-  const channel = msg.channel.id;
+  const channel = msg.guild.channels.cache.get(msg.channel.id);
   console.log('Channel: ' + channel);
-  var active_channel;
-  if (channel.includes(channel_prefix)){
-	active_channel = messaged_channel;
+  if ((channel.name).includes(channel_prefix)){
+	var active_channel = channel;
 	console.log('Channel Verified');
   }
   else {
