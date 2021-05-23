@@ -68,6 +68,10 @@ function generateSerial() {
     return randomSerial;
 }
 
+function randomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 async function display_game_menu(active_channel){
     	var choice;
 	var display_embed = new Discord.MessageEmbed()
@@ -84,7 +88,7 @@ async function display_game_menu(active_channel){
     	display_embed = await active_channel.send(display_embed)
 	await display_embed.react("🪙")
 	await display_embed.react("#️⃣")
-	//
+	/*
 	client.on('messageReactionAdd', (reaction, user) => {
     		console.log('a reaction has been added');
 		if (reaction.emoji.name === "🪙") {
@@ -94,7 +98,7 @@ async function display_game_menu(active_channel){
     			choice = 'tictactoe';
   		}
 	});
-	//
+	*/
 	/*
 	display_embed.awaitReactions()
 		.then(collected => {
@@ -109,8 +113,9 @@ async function display_game_menu(active_channel){
 			};
 		});
 	*/
+	choice = 'coinflip'; //// remove later
 	if (choice == 'coinflip'){
-		//coinflip(active_channel);
+		coinflip(active_channel);
 	}
 	else if (choice == 'tictactoe'){
 		tictactoe(active_channel);
@@ -118,6 +123,55 @@ async function display_game_menu(active_channel){
     	console.log('choice made');
     	return choice;
 };
+
+function coinflip(active_channel){
+	var tictactoe_embed = new Discord.MessageEmbed()
+	    .setColor('#0099ff')
+	    .setTitle('Coin Flip')
+	    .setDescription('**@Player 1**' + ' VS ' + '**@Player 2**' + '\n\n' + 'BET: ' + '000' + ' chips')
+	    .addFields(
+		    { name: 'Heads👑', value: 'Player #', inline: true},
+		    { name: 'Tails🍑', value: 'Player #', inline: true},
+	    )
+	    .setTimestamp()
+	    .setFooter('The Social Casino', 'https://i.imgur.com/PIIl7yp.jpeg');
+	const side = randomInteger(1, 2);
+	var msg = active_channel.send(tictactoe_embed)
+	.then(function (message) {
+              	message.react("👑")
+              	message.react("🍑")
+	});
+	if (side == 1){
+		tictactoe_embed = new Discord.MessageEmbed()
+	    		.setColor('#0099ff')
+	    		.setTitle('Coin Flip')
+	    		.setDescription('**@Player 1**' + ' VS ' + '**@Player 2**' + '\n\n' + 'BET: ' + '000' + ' chips')
+	    		.addFields(
+		    		{ name: 'Heads👑', value: '@ Player #', inline: true},
+		    		{ name: 'Tails🍑', value: '@ Player #', inline: true},
+				{ name: 'Heads👑', value: '@Heads WINS!'},
+	    		)
+	    		.setTimestamp()
+	    		.setFooter('The Social Casino', 'https://i.imgur.com/PIIl7yp.jpeg')
+			.attachFiles(["https://tenor.com/view/heads-coinflip-flip-a-coin-coin-coins-gif-21479854"]);
+		msg.edit(tictactoe_embed);
+	}
+	else if (side == 2){
+		tictactoe_embed = new Discord.MessageEmbed()
+	    		.setColor('#0099ff')
+	    		.setTitle('Coin Flip')
+	    		.setDescription('**@Player 1**' + ' VS ' + '**@Player 2**' + '\n\n' + 'BET: ' + '000' + ' chips')
+	    		.addFields(
+		    		{ name: 'Heads👑', value: '@ Player #', inline: true},
+		    		{ name: 'Tails🍑', value: '@ Player #', inline: true},
+				{ name: 'Heads👑', value: '@Tails WINS!'},
+	    		)
+	    		.setTimestamp()
+	    		.setFooter('The Social Casino', 'https://i.imgur.com/PIIl7yp.jpeg')
+			.attachFiles(["https://tenor.com/view/coins-tails-coin-flip-a-coin-coinflip-gif-21479856"]);
+		msg.edit(tictactoe_embed);
+	}
+}
 
 function tictactoe(active_channel){
     console.log('tictactoe initializing');
