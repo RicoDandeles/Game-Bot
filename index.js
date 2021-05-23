@@ -95,6 +95,7 @@ async function display_game_menu(active_channel){
 					choice = 'tictactoe';
 					break
 			};
+		});
 	if (choice == 'coinflip'){
 		console.log('coinflip chosen');
 		//coinflip(active_channel);
