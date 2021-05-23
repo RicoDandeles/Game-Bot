@@ -75,10 +75,26 @@ function generateSerial() {
     return randomSerial;
 }
 
-function display_game_menu(active_channel){
-    var choice = 'tictactoe';
-    console.log('choice made');
-    return choice;
+async function display_game_menu(active_channel){
+    	const display_embed = new Discord.MessageEmbed()
+	    .setColor('#0099ff')
+	    .setTitle('Game Menu')
+	    .addFields(
+		    { name: 'Coin Flip 🪙', value: '2 players', inline: true},
+		    { name: 'Tic Tac Toe #️⃣', value: '2 players', inline: true},
+	    )
+	    .setTimestamp()
+	    .setFooter('The Social Casino', 'https://i.imgur.com/PIIl7yp.jpeg');
+	    
+
+    	display_embed = await active_channel.send(display_embed)
+	await display_embed.react("🪙")
+	await display_embed.react("#️⃣")
+	});
+	
+	var choice = 'tictactoe';
+    	console.log('choice made');
+    	return choice;
 }
 
 function tictactoe(active_channel){
