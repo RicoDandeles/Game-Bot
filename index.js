@@ -94,6 +94,17 @@ function tictactoe(active_channel){
     const nine = ':white_large_square:';
     const end_condition = 'not met';
     const tictactoe_embed = new Discord.MessageEmbed()
+    	    .then(function (message) {
+              	message.react(":arrow_upper_left:")
+              	message.react(":arrow_up:")
+		message.react(":arrow_upper_right:")
+		message.react(":arrow_left:")
+		message.react(":stop_button:")    
+            	message.react(":arrow_right:")
+	    	message.react(":arrow_lower_left:")
+	    	message.react(":arrow_down:")
+	    	message.react(":arrow_lower_right:")
+	    })
 	    .setColor('#0099ff')
 	    .setTitle('Tic Tac Toe')
 	    .setDescription('Tic-tac-toe, is a game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a diagonal, horizontal, or vertical row is the winner.')
@@ -103,6 +114,7 @@ function tictactoe(active_channel){
 	    )
 	    .setTimestamp()
 	    .setFooter('The Social Casino', 'https://i.imgur.com/PIIl7yp.jpeg');
+	    
 
     active_channel.send(tictactoe_embed);
 }
