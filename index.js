@@ -107,15 +107,15 @@ function tictactoe(active_channel){
 
     active_channel.send(tictactoe_embed)
 	.then(function (message) {
-              	message.react(":arrow_upper_left:")
-              	message.react(":arrow_up:")
-		message.react(":arrow_upper_right:")
-		message.react(":arrow_left:")
-		message.react(":stop_button:")    
-            	message.react(":arrow_right:")
-	    	message.react(":arrow_lower_left:")
-	    	message.react(":arrow_down:")
-	    	message.react(":arrow_lower_right:")
+              	message.react("↖️")
+              	message.react("⬆️")
+		message.react("↗️")
+		message.react("⬅️")
+		message.react("⏹")    
+            	message.react("➡️")
+	    	message.react("↙️")
+	    	message.react("⬇️")
+	    	message.react("↘️")
 	});
 }
 
