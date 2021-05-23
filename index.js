@@ -155,11 +155,10 @@ function coinflip_winner(msg, side){
 	    		.addFields(
 		    		{ name: 'Heads👑', value: '@ Player #', inline: true},
 		    		{ name: 'Tails🍑', value: '@ Player #', inline: true},
-				{ name: 'Heads👑', value: '@Heads WINS!'},
+				{ name: 'Heads👑', value: '@Heads WINS!'+'/n'+"https://tenor.com/view/heads-coinflip-flip-a-coin-coin-coins-gif-21479854"},
 	    		)
 	    		.setTimestamp()
 	    		.setFooter('The Social Casino', 'https://i.imgur.com/PIIl7yp.jpeg')
-			.attachFiles(["https://tenor.com/view/heads-coinflip-flip-a-coin-coin-coins-gif-21479854"]);
 		setTimeout(function() {
 			msg.edit(tictactoe_embed)
 		}, 3000);
@@ -172,11 +171,10 @@ function coinflip_winner(msg, side){
 	    		.addFields(
 		    		{ name: 'Heads👑', value: '@ Player #', inline: true},
 		    		{ name: 'Tails🍑', value: '@ Player #', inline: true},
-				{ name: 'Heads👑', value: '@Tails WINS!'},
+				{ name: 'Heads👑', value: '@Tails WINS!'+'/n'+"https://tenor.com/view/coins-tails-coin-flip-a-coin-coinflip-gif-21479856"},
 	    		)
 	    		.setTimestamp()
 	    		.setFooter('The Social Casino', 'https://i.imgur.com/PIIl7yp.jpeg')
-			.attachFiles(["https://tenor.com/view/coins-tails-coin-flip-a-coin-coinflip-gif-21479856"]);
 		setTimeout(function() {
 			msg.edit(tictactoe_embed)
 		}, 3000);
