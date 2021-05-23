@@ -86,7 +86,7 @@ async function display_game_menu(active_channel){
 	await display_embed.react("#️⃣")
 	//
 	display_embed.awaitReactions((reaction) => (reaction.emoji.name == '🪙' || reaction.emoji.name == '#️⃣'), { max: 1 })
-		.then(collected => {
+		.then(reaction => {
        			switch (reaction.emoji.name) {
             			case "🪙":
 					console.log('coinflip chosen');
