@@ -155,7 +155,7 @@ function coinflip_winner(msg, side){
 	    		.addFields(
 		    		{ name: 'Heads👑', value: '@ Player #', inline: true},
 		    		{ name: 'Tails🍑', value: '@ Player #', inline: true},
-				{ name: 'Heads👑', value: '@Heads WINS!'},
+				{ name: '\n👑Heads👑', value: '@Heads WINS!'},
 	    		)
 			.setImage("https://i.imgur.com/Vo3B0BK.jpg")
 	    		.setTimestamp()
@@ -172,7 +172,7 @@ function coinflip_winner(msg, side){
 	    		.addFields(
 		    		{ name: 'Heads👑', value: '@ Player #', inline: true},
 		    		{ name: 'Tails🍑', value: '@ Player #', inline: true},
-				{ name: 'Heads👑', value: '@Tails WINS!'},
+				{ name: '\n🍑Tails🍑', value: '@Tails WINS!'},
 	    		)
 			.setImage("https://i.imgur.com/hcvnXJR.jpg")
 	    		.setTimestamp()
