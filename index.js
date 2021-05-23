@@ -36,7 +36,10 @@ client.on("message", async msg => {
 	active_channel = messaged_channel;
 	console.log('Channel Verified');
   }
-  else return;
+  else {
+	console.log('Channel Not Verified');
+	return;
+  }
   var input = msg.content;
   /* Commands */
   if (input.includes('+start')){
