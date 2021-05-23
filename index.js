@@ -96,7 +96,7 @@ function tictactoe(active_channel){
     const tictactoe_embed = new Discord.MessageEmbed()
 	    .setColor('#0099ff')
 	    .setTitle('Tic Tac Toe')
-	    .setDescription('**@Player 1**' + ' VS ' + '**@Player 2**')
+	    .setDescription('**@Player 1**' + ' VS ' + '**@Player 2**' + '\n' + 'BET: ' + '000' + ' chips')
 	    .setThumbnail('https://i.imgur.com/an20jm9.png')
 	    .addFields(
 		    { name: 'Board', value: one + ' ' + two + ' ' + three + '\n' + four + ' ' + five + ' ' + six + '\n' + seven + ' ' + eight + ' ' + nine },
