@@ -69,7 +69,8 @@ function generateSerial() {
 }
 
 async function display_game_menu(active_channel){
-    	var display_embed = new Discord.MessageEmbed()
+    	var choice;
+	var display_embed = new Discord.MessageEmbed()
 	    .setColor('#0099ff')
 	    .setTitle('Game Menu')
 	    .addFields(
@@ -83,12 +84,21 @@ async function display_game_menu(active_channel){
     	display_embed = await active_channel.send(display_embed)
 	await display_embed.react("🪙")
 	await display_embed.react("#️⃣")
-	
-	var choice = 'tictactoe';
+	await display_embed.awaitReactions()
+		.then(collected => {
+       			const reaction = collected.first();
+			switch (reaction.emoji.name) {
+            			case "🪙":
+					choice = 'coinflip';
+				case "#️⃣":
+					choice = 'tictactoe';
+					break
 	if (choice == 'coinflip'){
+		console.log('coinflip chosen');
 		//coinflip(active_channel);
 	}
 	else if (choice == 'tictactoe'){
+		console.log('tictactoe chosen');
 		tictactoe(active_channel);
 	}
     	console.log('choice made');
