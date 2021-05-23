@@ -87,14 +87,12 @@ async function display_game_menu(active_channel){
 	//
 	client.on('messageReactionAdd', (reaction, user) => {
     		console.log('a reaction has been added');
-		switch (reaction.emoji.name) {
-            			case "🪙":
-					choice = 'coinflip';
-					break
-				case "#️⃣":
-					choice = 'tictactoe';
-					break
-		};
+		if (reaction.emoji.name === "🪙") {
+    			choice = 'coinflip';
+  		}
+		else if (reaction.emoji.name === "#️⃣") {
+    			choice = 'tictactoe';
+  		}
 	});
 	//
 	/*
