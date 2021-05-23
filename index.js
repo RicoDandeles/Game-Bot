@@ -29,9 +29,13 @@ client.on("ready", () => {
 });
 
 client.on("message", async msg => {
+  console.log('Message recieved');
   var messaged_channel = msg.channel.id;
   var active_channel;
-  if (messaged_channel.includes(channel_prefix)) active_channel = messaged_channel;
+  if (messaged_channel.includes(channel_prefix)){
+	active_channel = messaged_channel;
+	console.log('Channel Verified');
+  }
   else return;
   var input = msg.content;
   /* Commands */
@@ -65,6 +69,7 @@ function display_game_menu(){
 }
 
 function tictactoe(active_channel){
+    console.log('tictactoe initializing');
     const channel = active_channel;
     const one = ':white_large_square:';
     const two = ':white_large_square:';
