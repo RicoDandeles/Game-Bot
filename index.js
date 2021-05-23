@@ -31,7 +31,7 @@ client.on("ready", () => {
 client.on("message", async msg => {
   console.log('Message recieved');
   const channel = msg.guild.channels.cache.get(msg.channel.id);
-  console.log('Channel: ' + channel);
+  console.log('Channel: ' + channel.name);
   if ((channel.name).includes(channel_prefix)){
 	var active_channel = channel;
 	console.log('Channel Verified');
@@ -41,13 +41,16 @@ client.on("message", async msg => {
 	return;
   }
   var input = msg.content;
+  console.log('command analysis');
   /* Commands */
   if (input.includes('+start')){
+    console.log('+start command input');
     msg.delete();
     var choice = display_game_menu(active_channel);
       
   }
   else {
+      console.log('command not found');
       return;
   }
 });
