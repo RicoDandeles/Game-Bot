@@ -97,7 +97,6 @@ function tictactoe(active_channel){
 	    .setColor('#0099ff')
 	    .setTitle('Tic Tac Toe')
 	    .setDescription('**@Player 1**' + ' VS ' + '**@Player 2**' + '\n\n' + 'BET: ' + '000' + ' chips')
-	    .setThumbnail('https://i.imgur.com/an20jm9.png')
 	    .addFields(
 		    { name: 'Board', value: one + ' ' + two + ' ' + three + '\n' + four + ' ' + five + ' ' + six + '\n' + seven + ' ' + eight + ' ' + nine },
 	    )
