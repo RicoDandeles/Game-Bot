@@ -85,13 +85,18 @@ async function display_game_menu(active_channel){
 	await display_embed.react("🪙")
 	await display_embed.react("#️⃣")
 	//
-	const filter = (reaction, user) => reaction.emoji.name === '#️⃣' 
-    		display_embed.then(m=>{m.awaitReactions(filter, {max: 1})
-        		.then(collected => {
-            			choice = 'tictactoe';
-				console.log('Choice: tictactoe');
-        	}).catch(console.error);
-     	});
+	let filter = (reaction, user) => reaction.emoji.name === '🪙' || reaction.emoji.name === '#️⃣'; 
+  	let col = display_embed.createReactionCollector(filter); 
+	col.on('collect', r => {
+      		switch (reaction.emoji.name) {
+            		case "🪙":
+			choice = 'coinflip';
+			break
+		case "#️⃣":
+			choice = 'tictactoe';
+			break
+		};
+  	});
 	//
 	/*
 	display_embed.awaitReactions()
