@@ -140,9 +140,8 @@ function coinflip(active_channel){
 	.then(function (message) {
               	message.react("👑")
               	message.react("🍑")
-	});
-	
-	if (side == 1){
+		//
+		if (side == 1){
 		tictactoe_embed = new Discord.MessageEmbed()
 	    		.setColor('#0099ff')
 	    		.setTitle('Coin Flip')
@@ -158,8 +157,8 @@ function coinflip(active_channel){
 		setTimeout(function() {
 			msg.edit(tictactoe_embed)
 		}, 2000);
-	}
-	else if (side == 2){
+		}
+		else if (side == 2){
 		tictactoe_embed = new Discord.MessageEmbed()
 	    		.setColor('#0099ff')
 	    		.setTitle('Coin Flip')
@@ -175,7 +174,11 @@ function coinflip(active_channel){
 		setTimeout(function() {
 			msg.edit(tictactoe_embed)
 		}, 2000);
-	}
+		}
+		//
+	});
+	
+	
 }
 
 function tictactoe(active_channel){
