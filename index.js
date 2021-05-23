@@ -32,7 +32,7 @@ client.on("message", async msg => {
   console.log('Message recieved');
   var messaged_channel = msg.channel.id;
   var active_channel;
-  if (messaged_channel.includes(channel_prefix)){
+  if ((messaged_channel.name).includes(channel_prefix)){
 	active_channel = messaged_channel;
 	console.log('Channel Verified');
   }
