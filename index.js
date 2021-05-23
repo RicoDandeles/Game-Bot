@@ -140,8 +140,13 @@ function coinflip(active_channel){
 	.then(function (message) {
               	message.react("👑")
               	message.react("🍑")
-		var msg = message;
+		coinflip_winner(side);
 	})
+	
+	
+}
+
+function coinflip_winner(side){
 	if (side == 1){
 		tictactoe_embed = new Discord.MessageEmbed()
 	    		.setColor('#0099ff')
@@ -175,8 +180,7 @@ function coinflip(active_channel){
 		setTimeout(function() {
 			msg.edit(tictactoe_embed)
 		}, 3000);
-		}
-	
+	}
 }
 
 function tictactoe(active_channel){
