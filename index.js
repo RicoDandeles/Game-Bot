@@ -97,12 +97,12 @@ function tictactoe(active_channel){
 	    .setColor('#0099ff')
 	    .setTitle('Tic Tac Toe')
 	    .setDescription('Tic-tac-toe, is a game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a diagonal, horizontal, or vertical row is the winner.')
-	    .setThumbnail('https://i.imgur.com/V2HD0AV.png')
+	    .setThumbnail('https://imgur.com/a/V2HD0AV.png')
 	    .addFields(
 		    { name: 'Board', value: one + ' ' + two + ' ' + three + '\n' + four + ' ' + five + ' ' + six + '\n' + seven + ' ' + eight + ' ' + nine },
 	    )
 	    .setTimestamp()
-	    .setFooter('The Social Casino', 'https://i.imgur.com/MCaw6XR.png');
+	    .setFooter('The Social Casino', 'https://imgur.com/a/MCaw6XR.png');
 
     active_channel.send(tictactoe_embed);
 }
