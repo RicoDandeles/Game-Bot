@@ -46,14 +46,7 @@ client.on("message", async msg => {
   if (input.includes('+start')){
     console.log('+start command input');
     msg.delete();
-    var choice = display_game_menu(active_channel);
-    	if (choice == 'tictactoe'){
-	    tictactoe(active_channel);
-	}
-	else{
-		console.log('no valid choice made');
-		return;
-	}
+    display_game_menu(active_channel);
   }
   else {
       console.log('command not found');
@@ -92,6 +85,12 @@ async function display_game_menu(active_channel){
 	await display_embed.react("#️⃣")
 	
 	var choice = 'tictactoe';
+	if (choice == 'coinflip'){
+		//coinflip(active_channel);
+	}
+	else if (choice == 'tictactoe'){
+		tictactoe(active_channel);
+	}
     	console.log('choice made');
     	return choice;
 };
