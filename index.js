@@ -76,7 +76,7 @@ function generateSerial() {
 }
 
 async function display_game_menu(active_channel){
-    	const display_embed = new Discord.MessageEmbed()
+    	var display_embed = new Discord.MessageEmbed()
 	    .setColor('#0099ff')
 	    .setTitle('Game Menu')
 	    .addFields(
@@ -98,17 +98,17 @@ async function display_game_menu(active_channel){
 
 function tictactoe(active_channel){
     console.log('tictactoe initializing');
-    const one = ':white_large_square:';
-    const two = ':white_large_square:';
-    const three = ':white_large_square:';
-    const four = ':white_large_square:';
-    const five = ':white_large_square:';
-    const six = ':white_large_square:';
-    const seven = ':white_large_square:';
-    const eight = ':white_large_square:';
-    const nine = ':white_large_square:';
-    const end_condition = 'not met';
-    const tictactoe_embed = new Discord.MessageEmbed()
+    var one = ':white_large_square:';
+    var two = ':white_large_square:';
+    var three = ':white_large_square:';
+    var four = ':white_large_square:';
+    var five = ':white_large_square:';
+    var six = ':white_large_square:';
+    var seven = ':white_large_square:';
+    var eight = ':white_large_square:';
+    var nine = ':white_large_square:';
+    var end_condition = 'not met';
+    var tictactoe_embed = new Discord.MessageEmbed()
 	    .setColor('#0099ff')
 	    .setTitle('Tic Tac Toe')
 	    .setDescription('**@Player 1**' + ' VS ' + '**@Player 2**' + '\n\n' + 'BET: ' + '000' + ' chips')
