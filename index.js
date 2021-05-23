@@ -85,16 +85,17 @@ async function display_game_menu(active_channel){
 	await display_embed.react("🪙")
 	await display_embed.react("#️⃣")
 	//
-	display_embed.awaitReactions(r => ['🪙', '#️⃣'].includes(r.emoji.name), {max: 1})
-    		.then(collected => {
-      			let r = collected.first();
-      			if (r.emoji.name == '🪙'){
-				choice = 'coinflip';
-			}
-      			else if (r.emoji.name == '#️⃣'){
-				choice = 'tictactoe';
-			};
-   	});
+	client.on('messageReactionAdd', (reaction, user) => {
+    		console.log('a reaction has been added');
+		switch (reaction.emoji.name) {
+            			case "🪙":
+					choice = 'coinflip';
+					break
+				case "#️⃣":
+					choice = 'tictactoe';
+					break
+		};
+	});
 	//
 	/*
 	display_embed.awaitReactions()
