@@ -20,6 +20,7 @@ const discordtoken = 'ODQ1NzMxMzA2NDk4MjkzODQx.YKlOqA.fMKzHcVkshepd1pHgPVVEUYKDE
 const serverId = '845730456195301376'/*'844644376826085426'*/
 const guild = client.channels.cache.get('845730456195301376'/*'844644376826085426'*/);
 const role = ('845732057056935967'/*'845381979205140490'*/);
+const channel_prefix = 'test' /*'lobby'*/
 //
 
 client.on("ready", () => {
@@ -30,21 +31,13 @@ client.on("ready", () => {
 client.on("message", async msg => {
   var messaged_channel = msg.channel.id;
   var active_channel;
-  if (messaged_channel.includes('lobby')) active_channel = messaged_channel;
+  if (messaged_channel.includes(channel_prefix)) active_channel = messaged_channel;
   else return;
   var input = msg.content;
   /* Commands */
   if (input.includes('+start')){
     msg.delete();
-    // Display Available Games Menu
-  }
-  if ( ){
-    
-  }
-  else if ( ){
-      
-  }
-  else if ( ){
+    var choice = display_game_menu(active_channel);
       
   }
   else {
@@ -64,6 +57,38 @@ function generateSerial() {
         randomSerial += chars.substring(randomNumber, randomNumber + 1);
     }
     return randomSerial;
+}
+
+display_game_menu(){
+    var choice = 'tictactoe';
+    return choice;
+}
+
+tictactoe(active_channel){
+    const channel = active_channel;
+    const one = ':white_large_square:';
+    const two = ':white_large_square:';
+    const three = ':white_large_square:';
+    const four = ':white_large_square:';
+    const five = ':white_large_square:';
+    const six = ':white_large_square:';
+    const seven = ':white_large_square:';
+    const eight = ':white_large_square:';
+    const nine = ':white_large_square:';
+    const end_condition = 'not met';
+    const tictactoe_embed = new Discord.MessageEmbed()
+	    .setColor('#0099ff')
+	    .setTitle('Tic Tac Toe')
+	    .setDescription('Tic-tac-toe, is a game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a diagonal, horizontal, or vertical row is the winner.')
+	    .setThumbnail('https://i.imgur.com/wSTFkRM.png')
+	    .addFields(
+		    { name: 'Board', value: one + ' ' + two + ' ' + three + ' ' + four + ' ' + five + ' ' + six + ' ' + seven + ' ' + eight + ' ' + nine },
+	    )
+	    .addField('Inline field title', 'Some value here', true)
+	    .setTimestamp()
+	    .setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
+
+    channel.send(tictactoe_embed);
 }
 
 client.login(discordtoken); 
