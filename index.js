@@ -90,7 +90,7 @@ async function display_game_menu(active_channel){
     	display_embed = await active_channel.send(display_embed)
 	await display_embed.react("🪙")
 	await display_embed.react("#️⃣")
-	});
+	};
 	
 	var choice = 'tictactoe';
     	console.log('choice made');
