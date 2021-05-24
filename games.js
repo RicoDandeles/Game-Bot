@@ -1,4 +1,4 @@
-exports.generateSerial = function() {
+module.exports.generateSerial = function() {
     'use strict';
     var chars = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
         serialLength = 10,
@@ -12,11 +12,11 @@ exports.generateSerial = function() {
     return randomSerial;
 }
 
-exports.randomInteger = function(min, max) {
+module.exports.randomInteger = function(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-exports.display_game_menu = async function(active_channel){
+module.exports.display_game_menu = async function(active_channel){
     	var choice;
 	var display_embed = new Discord.MessageEmbed()
 	    .setColor('#0099ff')
@@ -44,7 +44,7 @@ exports.display_game_menu = async function(active_channel){
     	return choice;
 };
 
-exports.coinflip = function(active_channel){
+module.exports.coinflip = function(active_channel){
 	var tictactoe_embed = new Discord.MessageEmbed()
 	    .setColor('#0099ff')
 	    .setTitle('Coin Flip')
@@ -66,7 +66,7 @@ exports.coinflip = function(active_channel){
 	
 }
 
-exports.coinflip_winner = function(msg, side){
+module.exports.coinflip_winner = function(msg, side){
 	if (side == 1){
 		tictactoe_embed = new Discord.MessageEmbed()
 	    		.setColor('#0099ff')
@@ -103,7 +103,7 @@ exports.coinflip_winner = function(msg, side){
 	}
 }
 
-exports.tictactoe = function(active_channel){
+module.exports.tictactoe = function(active_channel){
     console.log('tictactoe initializing');
     var one = ':white_large_square:';
     var two = ':white_large_square:';
