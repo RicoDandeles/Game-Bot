@@ -46,11 +46,12 @@ client.on("message", async msg => {
   if (input.includes('+start')){
     	console.log('+start command input');
     	msg.delete();
-	active_channel.send('You must designate players by pasting their id in the play order you wish to create (max 6).'+'\n'+'```234481484700844033.234481484700844033.234481484700844033.234481484700844033.```');
+	active_channel.send('You must designate players (including yourself) by pasting their id in the play order you wish to create (max 6).'+'\n'+'```+invite 234481484700844033.234481484700844033.234481484700844033.234481484700844033.```');
     	display_game_menu(active_channel);
 	//log_game(channel);
   }
-  else if (input.includes('@')){
+  else if (input.includes('+invite ')){
+	  input = input.split('+invite').join('');
 	  modify_players(active_channel,input);
   }
   else {
