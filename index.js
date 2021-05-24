@@ -140,7 +140,7 @@ async function display_game_menu(active_channel){
 	await display_embed.react("🪙")
 	await display_embed.react("#️⃣")
 	
-	choice = ''; //// remove later
+	choice = 'coinflip'; //// remove later
 	if (choice == 'coinflip'){
 		coinflip(active_channel);
 	}
