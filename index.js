@@ -164,7 +164,7 @@ async function coinflip(active_channel){
 	    .setTimestamp()
 	    .setFooter('The Social Casino', 'https://i.imgur.com/PIIl7yp.jpeg');
 	const side = randomInteger(1, 2);
-	var msg = active_channel.send(coinflip_embed)
+	var msg = await active_channel.send(coinflip_embed)
 	await coinflip_embed.react("👑")
         await coinflip_embed.react("🍑")
 	coinflip_winner(coinflip_embed, side);
@@ -231,7 +231,7 @@ async function tictactoe(active_channel){
 	    .setFooter('The Social Casino', 'https://i.imgur.com/PIIl7yp.jpeg');
 	    
 
-    active_channel.send(tictactoe_embed)
+    tictactoe_embed = await active_channel.send(tictactoe_embed)
 	await tictactoe_embed.react("↖️")
         await tictactoe_embed.react("⬆️")
 	await tictactoe_embed.react("↗️")
