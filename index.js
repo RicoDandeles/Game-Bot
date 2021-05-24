@@ -68,7 +68,11 @@ client.on('messageReactionAdd', (reaction, user) => {
     		return;
   	}
 	else{
-		console.log('Message: ' + reaction.message.id);
+		reaction.message.embeds.forEach((embed) => {
+			console.log("Scanning Embed");
+			var titleEmbed = embed.title;
+		}
+		console.log('Message: ' + titleEmbed);
 		console.log('Reaction: ' + reaction.emoji.name);
 		console.log('User: ' + user.id);
 	}
