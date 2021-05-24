@@ -51,23 +51,7 @@ client.on("message", async msg => {
 	//log_game(channel);
   }
   else if (input.includes('@')){
-	  var end_of_user;
-	  var users = [];
-	  var usersIDs = [];
-	  var user;
-	  var userID;
-	  var user_count = 0;
-	  while ((input != '')||(user_count != 6)){
-	  	end_of_user = getPosition(input, '@', 2)
-		user = input.substring(0, end_of_user);
-		input = input.substring(end_of_user, input.length);
-	  	user=user.split('@').join('')
-	  	userID = (client.users.cache.find(u => u.tag === input)).id;
-		user_count = user_count+1;
-		users.push(user);
-		usersIDs.push(userID);
-	  }
-	  modify_players(active_channel,users,usersIDs);
+	  modify_players(active_channel,input);
   }
   else {
       console.log('command not found');
@@ -119,6 +103,22 @@ async function display_game_menu(active_channel){
 };
 
 function modify_players(active_channel,users,usersIDs){
+	var end_of_user;
+	  var users = [];
+	  var usersIDs = [];
+	  var user;
+	  var userID;
+	  var user_count = 0;
+	  while ((input != '')||(user_count != 6)){
+	  	end_of_user = getPosition(input, '@', 2)
+		user = input.substring(0, end_of_user);
+		input = input.substring(end_of_user, input.length);
+	  	user=user.split('@').join('')
+	  	userID = client.users.cache.find(u => u.tag === input).id;
+		user_count = user_count+1;
+		users.push(user);
+		usersIDs.push(userID);
+	  }
 	var playerlist_embed = new Discord.MessageEmbed()
 	    .setColor('#FFFFFF')
 	    .setTitle('active_channel')
