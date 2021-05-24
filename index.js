@@ -62,7 +62,7 @@ client.on("message", async msg => {
 		user = input.substring(0, end_of_user);
 		input = input.substring(end_of_user, input.length);
 	  	user=user.split('@').join('')
-	  	userID = client.users.cache.find(u => u.tag === input).id;
+	  	userID = (client.users.cache.find(u => u.tag === input)).id;
 		user_count = user_count+1;
 		users.push(user);
 		usersIDs.push(userID);
