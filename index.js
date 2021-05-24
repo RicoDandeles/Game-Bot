@@ -1,3 +1,5 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Initialization
 var express = require('express');
 var app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,21 +15,22 @@ app.listen(PORT, () => {
 const Discord = require("discord.js");
 const { Client, Permissions } = require('discord.js');
 const client = new Discord.Client();
-
-// CHANGE THESE
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// My Variables
 const discordusername = 'Game Bot#6808'
 const discordtoken = 'ODQ1NzMxMzA2NDk4MjkzODQx.YKlOqA.fMKzHcVkshepd1pHgPVVEUYKDEQ'
 const serverId = '844644376826085426'
 const guild = client.channels.cache.get('844644376826085426');
 const role = ('845381979205140490');
 const channel_prefix = 'lobby';
-//
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// On Ready Event
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
   console.log(`Client ID: `+client.user.id)
 });
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// On Message Event
 client.on("message", async msg => {
   console.log('Message recieved');
   const channel = msg.guild.channels.cache.get(msg.channel.id);
@@ -44,17 +47,21 @@ client.on("message", async msg => {
   console.log('command analysis');
   /* Commands */
   if (input.includes('+start')){
-    console.log('+start command input');
-    msg.delete();
-    display_game_menu(active_channel);
+    	console.log('+start command input');
+    	msg.delete();
+	player_slots(active_channel);
+    	display_game_menu(active_channel);
   }
   else {
       console.log('command not found');
       return;
   }
 });
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// On Reaction Event
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Tools
 function generateSerial() {
     'use strict';
     var chars = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
@@ -72,7 +79,29 @@ function generateSerial() {
 function randomInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Player Slots
+async function player_slots(active_channel){
+	var players_embed = new Discord.MessageEmbed()
+	    .setColor('#0099ff')
+	    .setTitle('Player Slot Selection')
+	    .addFields(
+		    { name: 'Slots Rules', value: 'Do not skip slots, otherwise you will not be put in the game. Anyone (not in consecutive slots / over max player slots) will be considered a spectator and will not be able to influence the game(s).'},
+	    )
+	    .setTimestamp()
+	    .setFooter('The Social Casino', 'https://i.imgur.com/PIIl7yp.jpeg');
+	    
 
+    	players_embed = await active_channel.send(players_embed)
+	await players_embed.react("1️⃣")
+	await players_embed.react("2️⃣")
+	await players_embed.react("3️⃣")
+	await players_embed.react("4️⃣")
+	await players_embed.react("5️⃣")
+	await players_embed.react("6️⃣")
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Game Menu
 async function display_game_menu(active_channel){
     	var choice;
 	var display_embed = new Discord.MessageEmbed()
@@ -89,7 +118,8 @@ async function display_game_menu(active_channel){
     	display_embed = await active_channel.send(display_embed)
 	await display_embed.react("🪙")
 	await display_embed.react("#️⃣")
-	choice = 'coinflip'; //// remove later
+	
+	choice = ''; //// remove later
 	if (choice == 'coinflip'){
 		coinflip(active_channel);
 	}
@@ -99,7 +129,8 @@ async function display_game_menu(active_channel){
     	console.log('choice made');
     	return choice;
 };
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Coin Flip
 function coinflip(active_channel){
 	var tictactoe_embed = new Discord.MessageEmbed()
 	    .setColor('#0099ff')
@@ -158,7 +189,8 @@ function coinflip_winner(msg, side){
 		}, 3000);
 	}
 }
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Tic Tac Toe
 function tictactoe(active_channel){
     console.log('tictactoe initializing');
     var one = ':white_large_square:';
@@ -195,5 +227,6 @@ function tictactoe(active_channel){
 	    	message.react("↘️")
 	});
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 client.login(discordtoken); 
