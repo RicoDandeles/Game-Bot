@@ -68,7 +68,7 @@ client.on('messageReactionAdd', (reaction, user) => {
     		return;
   	}
 	else{
-		console.log('Message: ' + reaction.message.content);
+		console.log('Message: ' + reaction.message.title);
 		console.log('Reaction: ' + reaction.emoji.name);
 		console.log('User: ' + user.id);
 	}
