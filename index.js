@@ -47,8 +47,7 @@ client.on("message", async msg => {
     	console.log('+start command input');
     	msg.delete();
 	active_channel.send('You must designate players by tagging them in the play order you wish to create (max 6).'+'\n'+'```@John #1234 @Mark #4321 @Sally #2928```');
-	var players = designate_players(active_channel);
-    	display_game_menu(active_channel, players);
+    	display_game_menu(active_channel);
 	//log_game(channel);
   }
   else if (input.includes('@')){
