@@ -120,7 +120,7 @@ async function player_slots(active_channel){
 	await players_embed.react("4️⃣")
 	await players_embed.react("5️⃣")
 	await players_embed.react("6️⃣")
-}
+};
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Game Menu
 async function display_game_menu(active_channel){
@@ -168,9 +168,6 @@ async function coinflip(active_channel){
 	await coinflip_embed.react("👑")
         await coinflip_embed.react("🍑")
 	coinflip_winner(coinflip_embed, side);
-	})
-	
-	
 }
 
 async function coinflip_winner(msg, side){
