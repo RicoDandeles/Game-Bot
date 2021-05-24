@@ -23,6 +23,8 @@ const role = ('845732057056935967'/*'845381979205140490'*/);
 const channel_prefix = 'test' /*'lobby'*/
 //
 
+var games = require("./games.js");
+
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
   console.log(`Client ID: `+client.user.id)
@@ -46,7 +48,7 @@ client.on("message", async msg => {
   if (input.includes('+start')){
     console.log('+start command input');
     msg.delete();
-    display_game_menu(active_channel);
+    games.display_game_menu(active_channel);
   }
   else {
       console.log('command not found');
@@ -54,6 +56,7 @@ client.on("message", async msg => {
   }
 });
 
+/*
 function generateSerial() {
     'use strict';
     var chars = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
@@ -88,31 +91,6 @@ async function display_game_menu(active_channel){
     	display_embed = await active_channel.send(display_embed)
 	await display_embed.react("🪙")
 	await display_embed.react("#️⃣")
-	/*
-	client.on('messageReactionAdd', (reaction, user) => {
-    		console.log('a reaction has been added');
-		if (reaction.emoji.name === "🪙") {
-    			choice = 'coinflip';
-  		}
-		else if (reaction.emoji.name === "#️⃣") {
-    			choice = 'tictactoe';
-  		}
-	});
-	*/
-	/*
-	display_embed.awaitReactions()
-		.then(collected => {
-       			const reaction = collected.first();
-			switch (reaction.emoji.name) {
-            			case "🪙":
-					choice = 'coinflip';
-					break
-				case "#️⃣":
-					choice = 'tictactoe';
-					break
-			};
-		});
-	*/
 	choice = 'coinflip'; //// remove later
 	if (choice == 'coinflip'){
 		coinflip(active_channel);
@@ -219,5 +197,5 @@ function tictactoe(active_channel){
 	    	message.react("↘️")
 	});
 }
-
+*/
 client.login(discordtoken); 
