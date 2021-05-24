@@ -46,7 +46,7 @@ client.on("message", async msg => {
   if (input.includes('+start')){
     	console.log('+start command input');
     	msg.delete();
-	active_channel.send('You must designate players by tagging them in the play order you wish to create (max 6).'+'\n'+'```@John #1234 @Mark #4321 @Sally #2928```');
+	active_channel.send('You must designate players by tagging them in the play order you wish to create (max 6).'+'\n'+'```@John #1234 @Mark #4321 @Sally #2928 @```');
     	display_game_menu(active_channel);
 	//log_game(channel);
   }
@@ -100,8 +100,8 @@ async function display_game_menu(active_channel){
 	await display_embed.react("🪙")
 	await display_embed.react("#️⃣")
 	
+	choice='';//change later
 	
-	choice = 'coinflip'; //// remove later
 	if (choice == 'coinflip'){
 		coinflip(active_channel);
 	}
