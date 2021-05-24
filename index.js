@@ -81,6 +81,7 @@ function embedRelations(embedTitle, emojiName, userID, active_channel){
 	console.log('Emoji: ' + emojiName);
 	console.log('UserID: ' + userID);
 	console.log('ChannelID: ' + active_channel);
+	
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Tools
@@ -141,7 +142,7 @@ async function display_game_menu(active_channel){
 	await display_embed.react("🪙")
 	await display_embed.react("#️⃣")
 	
-	choice = 'tictactoe'; //// remove later
+	choice = ''; //// remove later
 	if (choice == 'coinflip'){
 		coinflip(active_channel);
 	}
