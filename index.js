@@ -70,16 +70,17 @@ client.on('messageReactionAdd', (reaction, user) => {
 	else{
 		reaction.message.embeds.forEach((embed) => {
 			console.log("Scanning Embed");
-			embedRelations(embed.title, reaction.emoji.name, user.id);
+			embedRelations(embed.title, reaction.emoji.name, user.id, reaction.message.channel.id);
 		});
 	}
 });
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Embed Reaction Relations
-function embedRelations(embedTitle, emojiName, userID){
+function embedRelations(embedTitle, emojiName, userID, active_channel){
 	console.log('Embed Title: ' + embedTitle);
 	console.log('Emoji: ' + emojiName);
 	console.log('UserID: ' + userID);
+	console.log('ChannelID: ' + active_channel);
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Tools
