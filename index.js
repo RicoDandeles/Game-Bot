@@ -46,7 +46,7 @@ client.on("message", async msg => {
   if (input.includes('+start')){
     	console.log('+start command input');
     	msg.delete();
-	active_channel.send('You must designate players by tagging them in the play order you wish to create (max 6).'+'\n'+'```@John #1234 @Mark #4321 @Sally #2928 @```');
+	active_channel.send('You must designate players by pasting their id in the play order you wish to create (max 6).'+'\n'+'```234481484700844033.234481484700844033.234481484700844033.234481484700844033.```');
     	display_game_menu(active_channel);
 	//log_game(channel);
   }
@@ -110,31 +110,23 @@ function modify_players(active_channel,users,usersIDs){
 	  var userID;
 	  var user_count = 0;
 	  while ((input != '')||(user_count != 6)){
-	  	end_of_user = getPosition(input, '@', 2)
+	  	end_of_user = getPosition(input, '.', 1)
 		user = input.substring(0, end_of_user);
 		input = input.substring(end_of_user, input.length);
-	  	user=user.split('@').join('')
-	  	userID = client.users.cache.find(u => u.tag === input).id;
+	  	user=user.split('.').join('')
 		user_count = user_count+1;
 		users.push(user);
-		usersIDs.push(userID);
 	  }
 	var playerlist_embed = new Discord.MessageEmbed()
 	    .setColor('#FFFFFF')
 	    .setTitle('active_channel')
 	    .addFields(
-		    { name: 'Player 1 Name: ', value: users[0]},
-		    { name: 'Player 1 ID: ', value: usersIDs[0]},
-		    { name: 'Player 2 Name: ', value: users[1]},
-		    { name: 'Player 2 ID: ', value: usersIDs[1]},
-		    { name: 'Player 3 Name: ', value: users[2]},
-		    { name: 'Player 3 ID: ', value: usersIDs[2]},
-		    { name: 'Player 4 Name: ', value: users[3]},
-		    { name: 'Player 4 ID: ', value: usersIDs[3]},
-		    { name: 'Player 5 Name: ', value: users[4]},
-		    { name: 'Player 5 ID: ', value: usersIDs[4]},
-		    { name: 'Player 6 Name: ', value: users[5]},
-		    { name: 'Player 6 ID: ', value: usersIDs[5]},
+		    { name: 'Player 1 ID: ', value: users[0]},
+		    { name: 'Player 2 ID: ', value: users[1]},
+		    { name: 'Player 3 ID: ', value: users[2]},
+		    { name: 'Player 4 ID: ', value: users[3]},
+		    { name: 'Player 5 ID: ', value: users[4]},
+		    { name: 'Player 6 ID: ', value: users[5]},
 	    )
 	
 	const player_database = '846190978015428608';
