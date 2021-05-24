@@ -78,8 +78,8 @@ client.on('messageReactionAdd', (reaction, user) => {
 // Embed Reaction Relations
 function embedRelations(embedTitle, emojiName, userID){
 	console.log('Embed Title: ' + embedTitle);
-	console.log('Reaction: ' + emojiName);
-	console.log('User: ' + userID);
+	console.log('Emoji: ' + emojiName);
+	console.log('UserID: ' + userID);
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Tools
@@ -152,8 +152,8 @@ async function display_game_menu(active_channel){
 };
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Coin Flip
-function coinflip(active_channel){
-	var tictactoe_embed = new Discord.MessageEmbed()
+async function coinflip(active_channel){
+	var coinflip_embed = new Discord.MessageEmbed()
 	    .setColor('#0099ff')
 	    .setTitle('Coin Flip')
 	    .setDescription('**@Player 1**' + ' VS ' + '**@Player 2**' + '\n\n' + 'BET: ' + '000' + ' chips')
@@ -164,19 +164,18 @@ function coinflip(active_channel){
 	    .setTimestamp()
 	    .setFooter('The Social Casino', 'https://i.imgur.com/PIIl7yp.jpeg');
 	const side = randomInteger(1, 2);
-	var msg = active_channel.send(tictactoe_embed)
-	.then(function (message) {
-              	message.react("👑")
-              	message.react("🍑")
-		coinflip_winner(message, side);
+	var msg = active_channel.send(coinflip_embed)
+	await coinflip_embed.react("👑")
+        await coinflip_embed.react("🍑")
+	coinflip_winner(coinflip_embed, side);
 	})
 	
 	
 }
 
-function coinflip_winner(msg, side){
+async function coinflip_winner(msg, side){
 	if (side == 1){
-		tictactoe_embed = new Discord.MessageEmbed()
+		coinflip_embed = new Discord.MessageEmbed()
 	    		.setColor('#0099ff')
 	    		.setTitle('Coin Flip')
 	    		.setDescription('**@Player 1**' + ' VS ' + '**@Player 2**' + '\n\n' + 'BET: ' + '000' + ' chips')
@@ -189,11 +188,11 @@ function coinflip_winner(msg, side){
 	    		.setTimestamp()
 	    		.setFooter('The Social Casino', 'https://i.imgur.com/PIIl7yp.jpeg')
 		setTimeout(function() {
-			msg.edit(tictactoe_embed)
+			msg.edit(coinflip_embed)
 		}, 3000);
 		}
 	else if (side == 2){
-		tictactoe_embed = new Discord.MessageEmbed()
+		coinflip_embed = new Discord.MessageEmbed()
 	    		.setColor('#0099ff')
 	    		.setTitle('Coin Flip')
 	    		.setDescription('**@Player 1**' + ' VS ' + '**@Player 2**' + '\n\n' + 'BET: ' + '000' + ' chips')
@@ -206,13 +205,13 @@ function coinflip_winner(msg, side){
 	    		.setTimestamp()
 	    		.setFooter('The Social Casino', 'https://i.imgur.com/PIIl7yp.jpeg')
 		setTimeout(function() {
-			msg.edit(tictactoe_embed)
+			msg.edit(coinflip_embed)
 		}, 3000);
 	}
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Tic Tac Toe
-function tictactoe(active_channel){
+async function tictactoe(active_channel){
     console.log('tictactoe initializing');
     var one = ':white_large_square:';
     var two = ':white_large_square:';
@@ -236,17 +235,15 @@ function tictactoe(active_channel){
 	    
 
     active_channel.send(tictactoe_embed)
-	.then(function (message) {
-              	message.react("↖️")
-              	message.react("⬆️")
-		message.react("↗️")
-		message.react("⬅️")
-		message.react("⏹")    
-            	message.react("➡️")
-	    	message.react("↙️")
-	    	message.react("⬇️")
-	    	message.react("↘️")
-	});
+	await tictactoe_embed.react("↖️")
+        await tictactoe_embed.react("⬆️")
+	await tictactoe_embed.react("↗️")
+	await tictactoe_embed.react("⬅️")
+	await tictactoe_embed.react("⏹")    
+        await tictactoe_embed.react("➡️")
+	await tictactoe_embed.react("↙️")
+	await tictactoe_embed.react("⬇️")
+	await tictactoe_embed.react("↘️")
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
