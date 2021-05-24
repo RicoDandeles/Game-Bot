@@ -33,6 +33,9 @@ client.on("ready", () => {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // On Message Event
 client.on("message", async msg => {
+  if (msg.author.id === discordid) { // the message is coming from the bot
+    	return;
+  }
   console.log('Message recieved');
   const channel = msg.guild.channels.cache.get(msg.channel.id);
   console.log('Channel: ' + channel.name);
