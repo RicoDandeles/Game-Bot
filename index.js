@@ -23,8 +23,6 @@ const role = ('845381979205140490');
 const channel_prefix = 'lobby';
 //
 
-var games = require("./games.js");
-
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
   console.log(`Client ID: `+client.user.id)
@@ -48,7 +46,7 @@ client.on("message", async msg => {
   if (input.includes('+start')){
     console.log('+start command input');
     msg.delete();
-    games.display_game_menu(active_channel);
+    display_game_menu(active_channel);
   }
   else {
       console.log('command not found');
@@ -56,7 +54,7 @@ client.on("message", async msg => {
   }
 });
 
-/*
+
 function generateSerial() {
     'use strict';
     var chars = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
@@ -197,5 +195,5 @@ function tictactoe(active_channel){
 	    	message.react("↘️")
 	});
 }
-*/
+
 client.login(discordtoken); 
