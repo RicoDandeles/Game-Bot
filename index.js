@@ -105,7 +105,6 @@ async function display_game_menu(active_channel){
 };
 
 function modify_players(active_channel,input){
-	  var end_of_user;
 	  var users = [];
 	  var usersIDs = [];
 	  var user;
@@ -113,10 +112,10 @@ function modify_players(active_channel,input){
 	  var user_count = 0;
 	console.log('logging players');
 	  while ((input != '')||(user_count != 6)){
-	  	end_of_user = getPosition(input, '.', 1)
-		user = input.substring(0, end_of_user);
-		input = input.substring(end_of_user, input.length);
+		user = input.substring(0, 19);
+		input = input.substring(19, input.length);
 	  	user=user.split('.').join('')
+		console.log('user logged: ' + user);
 		user_count = user_count+1;
 		users.push(user);
 	  }
