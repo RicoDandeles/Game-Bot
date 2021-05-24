@@ -103,8 +103,8 @@ async function display_game_menu(active_channel){
     	return choice;
 };
 
-function modify_players(active_channel,users,usersIDs){
-	var end_of_user;
+function modify_players(active_channel,input){
+	  var end_of_user;
 	  var users = [];
 	  var usersIDs = [];
 	  var user;
