@@ -17,10 +17,10 @@ const client = new Discord.Client();
 // CHANGE THESE
 const discordusername = 'Game Bot#6808'
 const discordtoken = 'ODQ1NzMxMzA2NDk4MjkzODQx.YKlOqA.fMKzHcVkshepd1pHgPVVEUYKDEQ'
-const serverId = '845730456195301376'/*'844644376826085426'*/
-const guild = client.channels.cache.get('845730456195301376'/*'844644376826085426'*/);
-const role = ('845732057056935967'/*'845381979205140490'*/);
-const channel_prefix = 'test' /*'lobby'*/
+const serverId = '844644376826085426'
+const guild = client.channels.cache.get('844644376826085426');
+const role = ('845381979205140490');
+const channel_prefix = 'lobby';
 //
 
 var games = require("./games.js");
