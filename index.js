@@ -105,16 +105,22 @@ async function display_game_menu(active_channel){
 };
 
 function modify_players(active_channel,input){
+	  input=input.split(' ').join('')
 	  var users = [];
 	  var usersIDs = [];
 	  var user;
 	  var userID;
 	  var user_count = 0;
+	  var real_users = 0;
 	console.log('logging players');
-	  while ((input != '')||(user_count != 6)){
+	  while (user_count != 6){
 		user = input.substring(0, 19);
 		input = input.substring(19, input.length);
 	  	user=user.split('.').join('')
+		if (user == ''){
+			user = ' ';
+			real_users = user_count;
+		}
 		console.log('user logged: ' + user);
 		user_count = user_count+1;
 		users.push(user);
@@ -122,6 +128,7 @@ function modify_players(active_channel,input){
 	var playerlist_embed = new Discord.MessageEmbed()
 	    .setColor('#FFFFFF')
 	    .setTitle('active_channel')
+	    .setDescription(real_users)
 	    .addFields(
 		    { name: 'Player 1 ID: ', value: users[0]},
 		    { name: 'Player 2 ID: ', value: users[1]},
