@@ -17,10 +17,10 @@ const client = new Discord.Client();
 // CHANGE THESE
 const discordusername = 'Game Bot#6808'
 const discordtoken = 'ODQ1NzMxMzA2NDk4MjkzODQx.YKlOqA.fMKzHcVkshepd1pHgPVVEUYKDEQ'
-const serverId = '844644376826085426'
-const guild = client.channels.cache.get('844644376826085426');
-const role = ('845381979205140490');
-const channel_prefix = 'lobby';
+const serverId = '845730456195301376'/*'844644376826085426'*/
+const guild = client.channels.cache.get('845730456195301376'/*'844644376826085426'*/);
+const role = ('845732057056935967'/*'845381979205140490'*/);
+const channel_prefix = 'test' /*'lobby'*/
 //
 
 client.on("ready", () => {
@@ -29,9 +29,9 @@ client.on("ready", () => {
 });
 
 client.on("message", async msg => {
-  	console.log('Message recieved');
-  	const channel = msg.guild.channels.cache.get(msg.channel.id);
-	console.log('Channel: ' + channel.name);
+  console.log('Message recieved');
+  const channel = msg.guild.channels.cache.get(msg.channel.id);
+  console.log('Channel: ' + channel.name);
   if ((channel.name).includes(channel_prefix)){
 	var active_channel = channel;
 	console.log('Channel Verified');
@@ -46,14 +46,8 @@ client.on("message", async msg => {
   if (input.includes('+start')){
     	console.log('+start command input');
     	msg.delete();
-	active_channel.send('You must designate players (including yourself) by pasting their id in the play order you wish to create (max 6).'+'\n'+'```+invite 234481484700844033.234481484700844033.234481484700844033.234481484700844033.```');
+	player_slots(active_channel);
     	display_game_menu(active_channel);
-	//log_game(channel);
-  }
-  else if (input.includes('+invite ')){
-	  console.log('+invite command input');
-	  input = input.split('+invite').join('');
-	  modify_players(active_channel,input);
   }
   else {
       console.log('command not found');
@@ -61,12 +55,42 @@ client.on("message", async msg => {
   }
 });
 
-function getPosition(string, subString, index) {
-  return string.split(subString, index).join(subString).length;
+function generateSerial() {
+    'use strict';
+    var chars = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
+        serialLength = 10,
+        randomSerial = "",
+        i,
+        randomNumber;
+    for (i = 0; i < serialLength; i = i + 1) {
+        randomNumber = Math.floor(Math.random() * chars.length);
+        randomSerial += chars.substring(randomNumber, randomNumber + 1);
+    }
+    return randomSerial;
 }
 
 function randomInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+async function player_slots(active_channel){
+	var players_embed = new Discord.MessageEmbed()
+	    .setColor('#0099ff')
+	    .setTitle('Player Slot Selection')
+	    .addFields(
+		    { name: 'Slots Rules', value: 'Do not skip slots, otherwise you will not be put in the game. Anyone not in consecutive slots // over max player slots will be considered a spectator and will not be able to onfluence the game(s).'},
+	    )
+	    .setTimestamp()
+	    .setFooter('The Social Casino', 'https://i.imgur.com/PIIl7yp.jpeg');
+	    
+
+    	players_embed = await active_channel.send(players_embed)
+	await players_embed.react("1️⃣")
+	await players_embed.react("2️⃣")
+	await players_embed.react("3️⃣")
+	await players_embed.react("4️⃣")
+	await players_embed.react("5️⃣")
+	await players_embed.react("6️⃣")
 }
 
 async function display_game_menu(active_channel){
@@ -86,61 +110,16 @@ async function display_game_menu(active_channel){
 	await display_embed.react("🪙")
 	await display_embed.react("#️⃣")
 	
-	choice='';//change later
-	
+	choice = 'coinflip'; //// remove later
 	if (choice == 'coinflip'){
 		coinflip(active_channel);
 	}
 	else if (choice == 'tictactoe'){
 		tictactoe(active_channel);
 	}
-	else if (choice == 'players'){
-		players = modify_players(active_channel);
-	}
-	else{
-		return;
-	}
     	console.log('choice made');
     	return choice;
 };
-
-function modify_players(active_channel,input){
-	  input=input.split(' ').join('')
-	  var users = [];
-	  var usersIDs = [];
-	  var user;
-	  var userID;
-	  var user_count = 0;
-	  var real_users = 0;
-	console.log('logging players');
-	  while (user_count != 6){
-		user = input.substring(0, 19);
-		input = input.substring(19, input.length);
-	  	user=user.split('.').join('')
-		if (user == ''){
-			user = ' ';
-			real_users = user_count;
-		}
-		console.log('user logged: ' + user);
-		user_count = user_count+1;
-		users.push(user);
-	  }
-	var playerlist_embed = new Discord.MessageEmbed()
-	    .setColor('#FFFFFF')
-	    .setTitle('active_channel')
-	    .setDescription(real_users)
-	    .addFields(
-		    { name: 'Player 1 ID: ', value: users[0]},
-		    { name: 'Player 2 ID: ', value: users[1]},
-		    { name: 'Player 3 ID: ', value: users[2]},
-		    { name: 'Player 4 ID: ', value: users[3]},
-		    { name: 'Player 5 ID: ', value: users[4]},
-		    { name: 'Player 6 ID: ', value: users[5]},
-	    )
-	console.log('sending log');
-	const player_database = '846190978015428608';
-	player_database.send(playerlist_embed);
-}
 
 function coinflip(active_channel){
 	var tictactoe_embed = new Discord.MessageEmbed()
