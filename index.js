@@ -51,6 +51,7 @@ client.on("message", async msg => {
 	//log_game(channel);
   }
   else if (input.includes('+invite ')){
+	  console.log('+invite command input');
 	  input = input.split('+invite').join('');
 	  modify_players(active_channel,input);
   }
@@ -110,6 +111,7 @@ function modify_players(active_channel,input){
 	  var user;
 	  var userID;
 	  var user_count = 0;
+	console.log('logging players');
 	  while ((input != '')||(user_count != 6)){
 	  	end_of_user = getPosition(input, '.', 1)
 		user = input.substring(0, end_of_user);
@@ -129,7 +131,7 @@ function modify_players(active_channel,input){
 		    { name: 'Player 5 ID: ', value: users[4]},
 		    { name: 'Player 6 ID: ', value: users[5]},
 	    )
-	
+	console.log('sending log');
 	const player_database = '846190978015428608';
 	player_database.send(playerlist_embed);
 }
