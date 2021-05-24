@@ -17,9 +17,10 @@ const { Client, Permissions } = require('discord.js');
 const client = new Discord.Client();
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // My Variables
-const discordusername = 'Game Bot#6808'
-const discordtoken = 'ODQ1NzMxMzA2NDk4MjkzODQx.YKlOqA.fMKzHcVkshepd1pHgPVVEUYKDEQ'
-const serverId = '844644376826085426'
+const discordusername = 'Game Bot#6808';
+const discordtoken = 'ODQ1NzMxMzA2NDk4MjkzODQx.YKlOqA.fMKzHcVkshepd1pHgPVVEUYKDEQ';
+const discordid = '845731306498293841';
+const serverId = '844644376826085426';
 const guild = client.channels.cache.get('844644376826085426');
 const role = ('845381979205140490');
 const channel_prefix = 'lobby';
@@ -59,7 +60,15 @@ client.on("message", async msg => {
 });
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // On Reaction Event
-
+client.on('messageReactionAdd', (reaction_orig, user) => {
+  	if (reaction_orig.message.author.id === user.id) { // the reaction is coming from the bot
+    		return;
+  	}
+	else{
+		console.log('Reaction: ' + reaction_orig);
+		console.log('User: ' + user);
+	}
+});
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Tools
 function generateSerial() {
