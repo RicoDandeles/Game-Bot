@@ -68,17 +68,19 @@ client.on('messageReactionAdd', (reaction, user) => {
     		return;
   	}
 	else{
-		var titleEmbed = '';
-		reaction.message.embeds.for((embed) => {
+		reaction.message.embeds.forEach((embed) => {
 			console.log("Scanning Embed");
-			titleEmbed = embed.title;
-			return titleEmbed;
+			embedRelations(embed.title, reaction.emoji.name, user.id);
 		});
-		console.log('Embed Title: ' + titleEmbed);
-		console.log('Reaction: ' + reaction.emoji.name);
-		console.log('User: ' + user.id);
 	}
 });
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Embed Reaction Relations
+function embedRelations(embedTitle, emojiName, userID){
+	console.log('Embed Title: ' + embedTitle);
+	console.log('Reaction: ' + emojiName);
+	console.log('User: ' + userID);
+}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Tools
 function generateSerial() {
