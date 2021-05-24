@@ -60,13 +60,13 @@ client.on("message", async msg => {
 });
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // On Reaction Event
-client.on('messageReactionAdd', (reaction_orig, user) => {
-  	if (reaction_orig.message.author.id === user.id) { // the reaction is coming from the bot
+client.on('messageReactionAdd', (reaction, user) => {
+  	if (reaction.message.author.id === user.id) { // the reaction is coming from the bot
     		return;
   	}
 	else{
-		console.log('Reaction: ' + reaction_orig);
-		console.log('User: ' + user);
+		console.log('Reaction: ' + reaction.emoji.name);
+		console.log('User: ' + user.id);
 	}
 });
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
