@@ -78,7 +78,7 @@ async function player_slots(active_channel){
 	    .setColor('#0099ff')
 	    .setTitle('Player Slot Selection')
 	    .addFields(
-		    { name: 'Slots Rules', value: 'Do not skip slots, otherwise you will not be put in the game. Anyone not in consecutive slots // over max player slots will be considered a spectator and will not be able to onfluence the game(s).'},
+		    { name: 'Slots Rules', value: 'Do not skip slots, otherwise you will not be put in the game. Anyone (not in consecutive slots / over max player slots) will be considered a spectator and will not be able to influence the game(s).'},
 	    )
 	    .setTimestamp()
 	    .setFooter('The Social Casino', 'https://i.imgur.com/PIIl7yp.jpeg');
@@ -110,7 +110,7 @@ async function display_game_menu(active_channel){
 	await display_embed.react("🪙")
 	await display_embed.react("#️⃣")
 	
-	choice = 'coinflip'; //// remove later
+	choice = ''; //// remove later
 	if (choice == 'coinflip'){
 		coinflip(active_channel);
 	}
