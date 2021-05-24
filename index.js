@@ -68,9 +68,10 @@ client.on('messageReactionAdd', (reaction, user) => {
     		return;
   	}
 	else{
+		var titleEmbed = '';
 		reaction.message.embeds.forEach((embed) => {
 			console.log("Scanning Embed");
-			var titleEmbed = embed.title;
+			titleEmbed = embed.title;
 			console.log('Message: ' + titleEmbed);
 		});
 		console.log('Reaction: ' + reaction.emoji.name);
