@@ -164,7 +164,7 @@ async function coinflip(active_channel){
 	    .setTimestamp()
 	    .setFooter('The Social Casino', 'https://i.imgur.com/PIIl7yp.jpeg');
 	const side = randomInteger(1, 2);
-	var msg = await active_channel.send(coinflip_embed)
+	coinflip_embed = await active_channel.send(coinflip_embed)
 	await coinflip_embed.react("👑")
         await coinflip_embed.react("🍑")
 	coinflip_winner(coinflip_embed, side);
