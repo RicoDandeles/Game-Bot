@@ -82,13 +82,19 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 	console.log('Emoji: ' + emojiName); // embedRelations[1]
 	console.log('UserID: ' + userID); // embedRelations[2]
 	console.log('ChannelID: ' + active_channel); // embedRelations[3]
-	
+	fetch_messages(active_channel);
+	//game_log_channel.send('Channel ID: ' + active_channel + ' | ' + 'Channel ID: ' + active_channel + ' | ' + 
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Search Database
+// Fetch Messages
 
-
-
+function fetch_messages(searched_channel_id){
+	client.channels.cache.get(game_log_channel).messages.fetch({ limit: 10 })
+		.then(messages => {
+			console.log(messages);
+		});
+};
+	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Tools
 function generateSerial() {
