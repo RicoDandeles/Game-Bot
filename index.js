@@ -82,8 +82,25 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 	console.log('Emoji: ' + emojiName); // embedRelations[1]
 	console.log('UserID: ' + userID); // embedRelations[2]
 	console.log('ChannelID: ' + active_channel); // embedRelations[3]
-	fetch_messages(active_channel);
-	//game_log_channel.send('Channel ID: ' + active_channel + ' | ' + 'Channel ID: ' + active_channel + ' | ' + 
+	// cache gamestate updates
+	var player1='';
+	var player2='';
+	var player3='';
+	var player4='';
+	var player5='';
+	var player6='';
+	
+	// 
+	var database_return = fetch_messages(active_channel);
+	if (database_return == 'not found'){
+		game_log_channel.send('Channel ID: ' + active_channel + ' | '
+	}
+	else {
+		// retrieve database information
+		
+		// overwrite database information
+		database_return.edit()
+	}
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Fetch Messages
@@ -96,12 +113,12 @@ function fetch_messages(searched_channel_id){
 			for ( var i=0; i < keys.length; i++){
 				client.channels.cache.get(game_log_channel).messages.fetch(keys[i])
 					.then(msg => {
-						msg = msg.content;
-						if (msg === undefined){
-							msg = 'undefined';
+						var msgContent = msg.content;
+						if (msgContent === undefined){
+							msgContent = 'undefined';
 						}
-						else if (msg.includes(searched_channel_id)){
-							console.log('success');
+						else if (msgContent.includes(searched_channel_id)){
+							return msg;
 							status = 'success';
 						}	
 					});
@@ -110,6 +127,8 @@ function fetch_messages(searched_channel_id){
 				}
 			}
 		});
+	status = 'not found';
+	return status;
 };
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
