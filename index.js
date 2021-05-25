@@ -82,57 +82,13 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 	console.log('Emoji: ' + emojiName); // embedRelations[1]
 	console.log('UserID: ' + userID); // embedRelations[2]
 	console.log('ChannelID: ' + active_channel); // embedRelations[3]
-	// recent embed
-	if ((searchDatabase('update', active_channel, embedTitle, emojiName, userID)[0])=='fail'){
-		var gamelog_embed = new Discord.MessageEmbed()
-	    		.setColor('#ffffff')
-	    		.setTitle(active_channel)
-	    		.addFields( { name: 'embedTitle', value: embedTitle }, )
-			.addFields( { name: 'emojiName', value: emojiName }, )
-	    		.addFields( { name: 'userID', value: userID }, )
-    		gamelog_embed = await game_log_channel.send(gamelog_embed)
-	}
-	else if ((searchDatabase('update', active_channel, embedTitle, emojiName, userID)[0])=='success'){
-		var embed = (searchDatabase('update', active_channel, embedTitle, emojiName, userID)[1]);
-		embed.addFields( { name: 'embedTitle', value: embedTitle }, )
-		embed.addFields( { name: 'emojiName', value: emojiName }, )
-		embed.addFields( { name: 'userID', value: userID }, )
-	}
-		
-	var gamelog_embed = new Discord.MessageEmbed()
-	    .setColor('#ffffff')
-	    .setTitle('Game Log')
-	    .setDescription(active_channel)
-	    .addFields( { name: 'Board', value: '' }, )
-	    .setTimestamp()
-	    .setFooter('The Social Casino', 'https://i.imgur.com/PIIl7yp.jpeg');
-	    
 	
-    	gamelog_embed = await game_log_channel.send(gamelog_embed)
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Search Database
-async function searchDatabase(command, channelID, embedTitle, emojiName, userID){
-	var status;
-	if (game_log_channel.messages === undefined) {
-    		game_log_channel.messages = '';
-		return 'No messages here!';
-  	}
-	game_log_channel.messages.fetch().then(embeds => { // Fetches the last 100 messages of the channel were the command was given
-	      	if (command == 'update'){
-			if (game_log_channel.messages === undefined) {
-    				embeds.title = '';
-  			}
-			if (embeds.title == channelID){
-		      		status = 'success';
-			}
-			else{
-				status = 'fail';
-			}
-			return [status, embeds];
-		}
-	})
-}
+
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Tools
 function generateSerial() {
