@@ -93,7 +93,8 @@ function fetch_messages(searched_channel_id){
 		.then(messages => {
 			var keys = Array.from(messages.keys());
 			for ( var i=0; i < keys.length; i++){
-				if ( keys[i].content.includes(searched_channel_id) ){
+				var msg = msg.channel.messages.fetch(keys[i])
+				if (msg.content.includes(searched_channel_id)){
 					console.log('success');
 					break;
 				}
