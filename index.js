@@ -93,14 +93,17 @@ function fetch_messages(searched_channel_id){
 		.then(messages => {
 			var keys = Array.from(messages.keys());
 			for ( var i=0; i < keys.length; i++){
-				var message = client.channels.cache.get(game_log_channel).messages.fetch(keys[i])
-				if (message === undefined){
-					message = 'undefined';
-				}
-				else if (message.includes(searched_channel_id)){
-					console.log('success');
-					break;
-				}	
+				client.channels.cache.get(game_log_channel).messages.fetch(keys[i])
+					.then(msg => {
+						msg = msg.content;
+						if (msg === undefined){
+							msg = 'undefined';
+						}
+						else if (msg.includes(searched_channel_id)){
+							console.log('success');
+							break;
+						}	
+					});
 			}
 		});
 };
