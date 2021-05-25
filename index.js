@@ -114,8 +114,14 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 // Search Database
 async function searchDatabase(command, channelID, embedTitle, emojiName, userID){
 	var status;
+	if (game_log_channel.messages === undefined) {
+    		return 'No messages here!';
+  	}
 	game_log_channel.messages.fetch().then(embeds => { // Fetches the last 100 messages of the channel were the command was given
 	      	if (command == 'update'){
+			if (game_log_channel.messages === undefined) {
+    				embeds.title = '';
+  			}
 			if (embeds.title == channelID){
 		      		status = 'success';
 			}
