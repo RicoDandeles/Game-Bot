@@ -94,6 +94,7 @@ function fetch_messages(searched_channel_id){
 			var keys = Array.from(messages.keys());
 			for ( var i=0; i < keys.length; i++){
 				var msg = client.channels.cache.get(game_log_channel).messages.fetch(keys[i])
+				console.log(msg.content);
 				if (msg.content.includes(searched_channel_id)){
 					console.log('success');
 					break;
