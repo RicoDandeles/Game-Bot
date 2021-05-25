@@ -91,7 +91,7 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 function fetch_messages(searched_channel_id){
 	client.channels.cache.get(game_log_channel).messages.fetch({ limit: 10 })
 		.then(messages => {
-			console.log(messages.keys());
+			console.log(messages.keys(1));
 		});
 };
 	
