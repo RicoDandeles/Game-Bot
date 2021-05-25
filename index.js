@@ -92,7 +92,9 @@ function fetch_messages(searched_channel_id){
 	client.channels.cache.get(game_log_channel).messages.fetch({ limit: 10 })
 		.then(messages => {
 			var keys = Array.from(messages.keys());
-			console.log(keys);
+			for ( var i=0; i < keys.length; i++){
+				console.log(keys[i]);
+			}
 		});
 };
 	
