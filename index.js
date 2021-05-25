@@ -91,11 +91,16 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 function fetch_messages(searched_channel_id){
 	client.channels.cache.get(game_log_channel).messages.fetch({ limit: 10 })
 		.then(messages => {
+			var msgContent
 			var keys = Array.from(messages.keys());
 			for ( var i=0; i < keys.length; i++){
 				client.channels.cache.get(game_log_channel).messages.fetch(keys[i])
 					.then(message => 
-					      	if (msg.content.includes(searched_channel_id)){
+					      	msgContent = message.content;
+					      	if (msgContent === undefined){
+							msgContent = 'undefined';
+						}
+					      	else if (msgContent.includes(searched_channel_id)){
 							console.log('success');
 							break;
 						}
