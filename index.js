@@ -94,11 +94,8 @@ function fetch_messages(searched_channel_id){
 			var msgContent
 			var keys = Array.from(messages.keys());
 			for ( var i=0; i < keys.length; i++){
-				client.channels.cache.get(game_log_channel).messages.fetch(keys[i])
-					.then(message => 
-					      	msgContent = message.content;
-					)
-				if (msgContent === undefined){
+				var message = client.channels.cache.get(game_log_channel).messages.fetch(keys[i])
+				if (message === undefined){
 					msgContent = 'undefined';
 				}
 				else if (msgContent.includes(searched_channel_id)){
