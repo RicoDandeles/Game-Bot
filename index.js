@@ -24,6 +24,7 @@ const serverId = '844644376826085426';
 const guild = client.channels.cache.get('844644376826085426');
 const role = ('845381979205140490');
 const channel_prefix = 'lobby';
+const game_log_channel = '846170644978597898';
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // On Ready Event
 client.on("ready", () => {
@@ -77,11 +78,53 @@ client.on('messageReactionAdd', (reaction, user) => {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Embed Reaction Relations
 function embedRelations(embedTitle, emojiName, userID, active_channel){
-	console.log('Embed Title: ' + embedTitle);
-	console.log('Emoji: ' + emojiName);
-	console.log('UserID: ' + userID);
-	console.log('ChannelID: ' + active_channel);
+	console.log('Embed Title: ' + embedTitle); // embedRelations[0]
+	console.log('Emoji: ' + emojiName); // embedRelations[1]
+	console.log('UserID: ' + userID); // embedRelations[2]
+	console.log('ChannelID: ' + active_channel); // embedRelations[3]
+	// recent embed
+	if ((searchDatabase('update', active_channel, embedTitle, emojiName, userID)[0])=='fail'){
+		var gamelog_embed = new Discord.MessageEmbed()
+	    		.setColor('#ffffff')
+	    		.setTitle(active_channel)
+	    		.addFields( { name: 'embedTitle', value: embedTitle }, )
+			.addFields( { name: 'emojiName', value: emojiName }, )
+	    		.addFields( { name: 'userID', value: userID }, )
+    		gamelog_embed = await game_log_channel.send(gamelog_embed)
+	}
+	else if ((searchDatabase('update', active_channel, embedTitle, emojiName, userID)[0])=='success'){
+		var embed = (searchDatabase('update', active_channel, embedTitle, emojiName, userID)[1]);
+		embed.addFields( { name: 'embedTitle', value: embedTitle }, )
+		embed.addFields( { name: 'emojiName', value: emojiName }, )
+		embed.addFields( { name: 'userID', value: userID }, )
+	}
+		
+	var gamelog_embed = new Discord.MessageEmbed()
+	    .setColor('#ffffff')
+	    .setTitle('Game Log')
+	    .setDescription(active_channel)
+	    .addFields( { name: 'Board', value: '' }, )
+	    .setTimestamp()
+	    .setFooter('The Social Casino', 'https://i.imgur.com/PIIl7yp.jpeg');
+	    
 	
+    	gamelog_embed = await game_log_channel.send(gamelog_embed)
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Search Database
+async function searchDatabase(command, channelID, embedTitle, emojiName, userID){
+	var status;
+	game_log_channel.fetchMessages({ limit: 100 }).then(embeds => { // Fetches the last 100 messages of the channel were the command was given
+	      	if (command == 'update'){
+			if (embeds.title == channelID){
+		      		status = 'success';
+			}
+			else{
+				status = 'fail';
+			}
+			return [status, embeds];
+		}
+	})
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Tools
