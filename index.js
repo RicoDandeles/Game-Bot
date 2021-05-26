@@ -151,6 +151,7 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 		switch (emojiName) {
   			case '1️⃣':
   			  player1 = userID;
+			  console.log('player 1 updated: ' + player1);
   			  break;
 			case '2️⃣':
   			  player2 = userID;
