@@ -102,6 +102,7 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 	var database_return = fetch_messages(active_channel);
 	var database_return_id;
 	var database_return_msg;
+	await sleep(100);
 	console.log(database_return);
 	console.log('fetched');
 	if (database_return != 'not found'){
@@ -247,7 +248,6 @@ async function fetch_messages(searched_channel_id){
 					});
 			}
 		});
-	await sleep(200);
 	return 'not found';
 };
 	
