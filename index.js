@@ -232,22 +232,24 @@ function fetch_messages(searched_channel_id){
 			keys = Array.from(messages.keys());
 			console.log(keys);
 			for ( var i=0; i < keys.length; i++){
-			console.log('iterating through messages');
-			client.channels.cache.get(game_log_channel).messages.fetch(keys[i])
-				.then(msg => {
-					var msgContent = msg.content;
-					if (msgContent === undefined){
-						msgContent = 'undefined';
-						console.log('undefined message');
-					}
-					else if (msgContent.includes(searched_channel_id)){
-						console.log('channel record found in logs');
-						return [ msg, msgContent, msg.id ];
-					}
-				});
+				console.log('iterating through messages');
+				client.channels.cache.get(game_log_channel).messages.fetch(keys[i])
+					.then(msg => {
+						var msgContent = msg.content;
+						if (msgContent === undefined){
+							msgContent = 'undefined';
+							console.log('undefined message');
+						}
+						else if (msgContent.includes(searched_channel_id)){
+							console.log('channel record found in logs');
+							return [ msg, msgContent, msg.id ];
+						}
+					});
+				if (i==keys.length-1){
+					return 'not found';
+				}
 			}
 		});
-	return 'not found';
 };
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
