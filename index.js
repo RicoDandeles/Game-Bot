@@ -196,6 +196,7 @@ function fetch_messages(searched_channel_id){
 							msgContent = 'undefined';
 						}
 						else if (msgContent.includes(searched_channel_id)){
+							console.log('channel record found in logs');
 							return msg;
 							status = 'success';
 						}	
@@ -205,6 +206,7 @@ function fetch_messages(searched_channel_id){
 				}
 			}
 		});
+	console.log('record not found');
 	status = 'not found';
 	return status;
 };
