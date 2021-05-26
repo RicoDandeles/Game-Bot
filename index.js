@@ -231,7 +231,7 @@ function fetch_messages(searched_channel_id){
 	var msgID = '';
 	var found_msgContent = '';
 	var status = 'searching';
-	console.log('searching');
+	console.log(status);
 	client.channels.cache.get(game_log_channel).messages.fetch({ limit: 10 })
 		.then(messages => {
 			var keys = Array.from(messages.keys());
@@ -255,6 +255,7 @@ function fetch_messages(searched_channel_id){
 					});
 			}
 		});
+	console.log(status);
 	if (status == 'found'){
 		console.log(found_msgContent);
 		return [ found_msgContent, msgID ];
