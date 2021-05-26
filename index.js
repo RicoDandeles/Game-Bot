@@ -100,10 +100,10 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 	var player6_bet='';
 	// 
 	var database_return = fetch_messages(active_channel);
-	var database_return_id = channel.messages.fetch(database_return[1])
-	database_return = database_return[0];
 	console.log('Database Return: ' + database_return);
 	if (database_return != 'not found'){
+		var database_return_id = channel.messages.fetch(database_return[1])
+		database_return = database_return[0];
 		// retrieve database information
 		channel = (database_return.split('|')[0]).split('Channel ID: ').join('').split(' ').join('');
 		database_return = database_return.split(database_return.split('|')[0]+'|').join('');
