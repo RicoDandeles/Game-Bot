@@ -99,7 +99,7 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 	var player5_bet='';
 	var player6_bet='';
 	// 
-	var database_return = setTimeout(() => {  fetch_messages(active_channel); }, 1000);
+	var database_return = fetch_messages(active_channel);
 	var database_return_id;
 	var database_return_msg;
 	console.log(database_return);
