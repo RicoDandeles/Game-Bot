@@ -224,9 +224,9 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 function fetch_messages(searched_channel_id){
 	var msgContent = '';
 	var msgID = '';
+	var status = 'searching';
 	client.channels.cache.get(game_log_channel).messages.fetch({ limit: 10 })
 		.then(messages => {
-			var status = 'searching';
 			var keys = Array.from(messages.keys());
 			for ( var i=0; i < keys.length; i++){
 				client.channels.cache.get(game_log_channel).messages.fetch(keys[i])
@@ -244,8 +244,10 @@ function fetch_messages(searched_channel_id){
 						}	
 					});
 			}
-			console.log('2!'+ msgContent + '\n\n' + msgID);
-			return status, msgContent, msgID;
+			if (status == 'found'){
+				console.log('2!'+ msgContent + '\n\n' + msgID);
+				return status, msgContent, msgID;
+			};	
 		});
 	if (status == 'found'){
 		console.log('3!'+ msgContent + '\n\n' + msgID);
