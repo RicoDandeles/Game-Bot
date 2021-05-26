@@ -247,6 +247,7 @@ async function fetch_messages(searched_channel_id){
 					});
 			}
 		});
+	await sleep(50);
 	return 'not found';
 };
 	
