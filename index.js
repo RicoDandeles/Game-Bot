@@ -77,7 +77,7 @@ client.on('messageReactionAdd', (reaction, user) => {
 });
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Embed Reaction Relations
-function embedRelations(embedTitle, emojiName, userID, active_channel){
+async function embedRelations(embedTitle, emojiName, userID, active_channel){
 	console.log('Embed Title: ' + embedTitle); // embedRelations[0]
 	console.log('Emoji: ' + emojiName); // embedRelations[1]
 	console.log('UserID: ' + userID); // embedRelations[2]
@@ -99,7 +99,7 @@ function embedRelations(embedTitle, emojiName, userID, active_channel){
 	var player5_bet='';
 	var player6_bet='';
 	// 
-	var database_return = fetch_messages(active_channel);
+	var database_return = await fetch_messages(active_channel);
 	var database_return_id;
 	console.log('fetched messages');
 	console.log(database_return);
@@ -238,6 +238,7 @@ function fetch_messages(searched_channel_id){
 			keys = Array.from(messages.keys());
 		});
 	if (keys != 'not defined'){
+		console.log('keys defined');
 		for ( var i=0; i < keys.length; i++){
 			console.log('iterating through messages');
 			client.channels.cache.get(game_log_channel).messages.fetch(keys[i])
