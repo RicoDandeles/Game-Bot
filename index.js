@@ -245,18 +245,18 @@ function fetch_messages(searched_channel_id){
 							msgID = msg.id
 							console.log('1!'+ msgContent + '\n\n' + msgID);
 							status = 'found';
-							return status, msgContent, msgID;
+							return [ status, msgContent, msgID ];
 						}	
 					});
 			}
 			if (status == 'found'){
 				console.log('2!'+ msgContent + '\n\n' + msgID);
-				return status, msgContent, msgID;
+				return [ status, msgContent, msgID ];
 			};	
 		});
 	if (status == 'found'){
 		console.log('3!'+ msgContent + '\n\n' + msgID);
-		return msgContent, msgID;
+		return [ msgContent, msgID ];
 	};
 };
 	
