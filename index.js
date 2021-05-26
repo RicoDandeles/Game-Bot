@@ -78,7 +78,7 @@ client.on('messageReactionAdd', (reaction, user) => {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Embed Reaction Relations
 async function embedRelations(embedTitle, emojiName, userID, active_channel){
-	const client.channels.get(game_log_channel)
+	var game_log_channel = client.channels.get(game_log_channel)
 	console.log('Embed Title: ' + embedTitle); // embedRelations[0]
 	console.log('Emoji: ' + emojiName); // embedRelations[1]
 	console.log('UserID: ' + userID); // embedRelations[2]
@@ -178,7 +178,7 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
   			  game_name = 'tictactoe';
   			  break;
 		}
-		database_return.edit()
+		database_return.edit('Channel ID: ' + channel + ' | ' + 'Game Name: ' + game_name + ' | ' + 'Game Status: ' + game_status + ' | ' + 'Player 1: ' + player1 + ' | ' + 'Player 2: ' + player2 + ' | ' + 'Player 3: ' + player3 + ' | '  + 'Player 4: ' + player4 + ' | ' + 'Player 5: ' + player5 + ' | ' + 'Player 6: ' + player6 + ' | ' + 'Player 1 Bet: ' + player1_bet + ' | ' + 'Player 2 Bet: ' + player2_bet + ' | ' + 'Player 3 Bet: ' + player3_bet + ' | '  + 'Player 4 Bet: ' + player4_bet + ' | ' + 'Player 5 Bet: ' + player5_bet + ' | ' + 'Player 6 Bet: ' + player6_bet + ' | ')
 	}
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
