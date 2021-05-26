@@ -101,6 +101,7 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 	// 
 	var database_return = await fetch_messages(active_channel);
 	if (database_return == 'not defined'){
+		console.log('database_return = not defined');
 		return;
 	}
 	var database_return_id;
@@ -271,6 +272,7 @@ function fetch_messages(searched_channel_id){
 		}
 	}
 	else if (keys == 'not defined'){
+		console.log(keys);
 		return 'not defined';
 	}
 };
