@@ -224,7 +224,8 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 // Fetch Messages
 
 function fetch_messages(searched_channel_id){
-	var msg = 'not found';
+	var msgContent = '';
+	var msgID = '';
 	client.channels.cache.get(game_log_channel).messages.fetch({ limit: 10 })
 		.then(messages => {
 			var status = 'searching';
@@ -232,20 +233,21 @@ function fetch_messages(searched_channel_id){
 			for ( var i=0; i < keys.length; i++){
 				client.channels.cache.get(game_log_channel).messages.fetch(keys[i])
 					.then(msg => {
-						var msgContent = msg.content;
+						msgContent = msg.content;
 						if (msgContent === undefined){
 							msgContent = 'undefined';
 						}
 						else if (msgContent.includes(searched_channel_id)){
 							console.log('channel record found in logs');
 							console.log(msgContent);
-							return msgContent, msg.id;
+							msgID = msg.id
+							return msgContent, msgID;
 						}	
 					});
 			}
+			return msgContent, msgID;
 		});
-	console.log('record not found');
-	return msg;
+	return msgContent, msgID;
 };
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
