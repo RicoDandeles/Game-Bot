@@ -240,11 +240,8 @@ function fetch_messages(searched_channel_id){
 	client.channels.cache.get(game_log_channel).messages.fetch({ limit: 10 })
 		.then(messages => {
 			keys = Array.from(messages.keys());
-			return keys;
-		});
-	if (keys != 'not defined'){
-		console.log('keys defined');
-		for ( var i=0; i < keys.length; i++){
+			console.log(keys);
+			for ( var i=0; i < keys.length; i++){
 			console.log('iterating through messages');
 			client.channels.cache.get(game_log_channel).messages.fetch(keys[i])
 				.then(msg => {
@@ -263,6 +260,7 @@ function fetch_messages(searched_channel_id){
 				});
 		}
 		console.log('test 2: ' + status);
+		});
 		if (status == 'found'){
 			console.log(found_msgContent);
 			return [ found_msgContent, msgID ];
@@ -270,11 +268,6 @@ function fetch_messages(searched_channel_id){
 		else{
 			return 'not found';
 		}
-	}
-	else if (keys == 'not defined'){
-		console.log(keys);
-		return 'not defined';
-	}
 };
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
