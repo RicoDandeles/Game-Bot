@@ -100,13 +100,13 @@ function embedRelations(embedTitle, emojiName, userID, active_channel){
 	var player6_bet='';
 	// 
 	var database_return = fetch_messages(active_channel);
+	var database_return_id;
 	console.log('fetched messages');
 	console.log(database_return);
 	console.log(database_return[0]);
 	console.log(database_return[1]);
-	console.log(database_return[2]);
-	var database_return_id = database_return[1];
-	if (database_return[0] != ''){
+	if (database_return != 'not found'){
+		database_return_id = database_return[1];
 		database_return = database_return[0];
 		// retrieve database information
 		channel = (database_return.split('|')[0]).split('Channel ID: ').join('').split(' ').join('');
@@ -229,6 +229,7 @@ function embedRelations(embedTitle, emojiName, userID, active_channel){
 function fetch_messages(searched_channel_id){
 	var msgContent = '';
 	var msgID = '';
+	var found_msgContent = '';
 	var status = 'searching';
 	console.log('searching');
 	client.channels.cache.get(game_log_channel).messages.fetch({ limit: 10 })
@@ -246,21 +247,21 @@ function fetch_messages(searched_channel_id){
 						else if (msgContent.includes(searched_channel_id)){
 							console.log('channel record found in logs');
 							msgID = msg.id
-							console.log(msgContent);
+							found_msgContent = msgContent
+							// console.log(msgContent);
 							status = 'found';
-							return [ status, msgContent, msgID ];
+							// return [ status, msgContent, msgID ];
 						}	
 					});
 			}
-			if (status == 'found'){
-				console.log(msgContent);
-				return [ status, msgContent, msgID ];
-			};	
 		});
 	if (status == 'found'){
-		console.log(msgContent);
-		return [ msgContent, msgID ];
-	};
+		console.log(found_msgContent);
+		return [ found_msgContent, msgID ];
+	}
+	else{
+		return 'not found';
+	}
 };
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
