@@ -101,6 +101,7 @@ function embedRelations(embedTitle, emojiName, userID, active_channel){
 	// 
 	var database_return = fetch_messages(active_channel);
 	console.log('fetched messages');
+	console.log(database_return);
 	console.log(database_return[0]);
 	console.log(database_return[1]);
 	console.log(database_return[2]);
