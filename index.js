@@ -227,10 +227,6 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 // Fetch Messages
 
 function fetch_messages(searched_channel_id){
-	var msgContent = '';
-	var msgID = '';
-	var found_msgContent = '';
-	console.log(status);
 	client.channels.cache.get(game_log_channel).messages.fetch({ limit: 10 })
 		.then(messages => {
 			keys = Array.from(messages.keys());
@@ -239,7 +235,7 @@ function fetch_messages(searched_channel_id){
 			console.log('iterating through messages');
 			client.channels.cache.get(game_log_channel).messages.fetch(keys[i])
 				.then(msg => {
-					msgContent = msg.content;
+					var msgContent = msg.content;
 					if (msgContent === undefined){
 						msgContent = 'undefined';
 						console.log('undefined message');
