@@ -100,6 +100,7 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 	var player6_bet='';
 	// 
 	var database_return = fetch_messages(active_channel);
+	console.log('Database Return: ' + database_return);
 	if (database_return != 'not found'){
 		// retrieve database information
 		channel = (database_return.split('|')[0]).split('Channel ID: ').join('').split(' ').join('');
@@ -183,7 +184,7 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
   			  break;
 		}
 		console.log(database_return);
-		//channel.messages.fetch('99539446449315840')
+		//channel.messages.fetch(channel.id)
 		database_return.edit('Channel ID: ' + channel + ' | ' + 'Game Name: ' + game_name + ' | ' + 'Game Status: ' + game_status + ' | ' + 'Player 1: ' + player1 + ' | ' + 'Player 2: ' + player2 + ' | ' + 'Player 3: ' + player3 + ' | '  + 'Player 4: ' + player4 + ' | ' + 'Player 5: ' + player5 + ' | ' + 'Player 6: ' + player6 + ' | ' + 'Player 1 Bet: ' + player1_bet + ' | ' + 'Player 2 Bet: ' + player2_bet + ' | ' + 'Player 3 Bet: ' + player3_bet + ' | '  + 'Player 4 Bet: ' + player4_bet + ' | ' + 'Player 5 Bet: ' + player5_bet + ' | ' + 'Player 6 Bet: ' + player6_bet + ' | ')
 		                 
 	}
