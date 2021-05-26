@@ -184,6 +184,7 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 // Fetch Messages
 
 function fetch_messages(searched_channel_id){
+	var msg = 'not found';
 	client.channels.cache.get(game_log_channel).messages.fetch({ limit: 10 })
 		.then(messages => {
 			var status = 'searching';
@@ -198,18 +199,12 @@ function fetch_messages(searched_channel_id){
 						else if (msgContent.includes(searched_channel_id)){
 							console.log('channel record found in logs');
 							return msg;
-							console.log('message returned');
-							status = 'success';
 						}	
 					});
-				if (status == 'success'){
-					break;
-				}
 			}
 		});
 	console.log('record not found');
-	status = 'not found';
-	return status;
+	return msg;
 };
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
