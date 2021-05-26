@@ -155,24 +155,31 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
   			  break;
 			case '2️⃣':
   			  player2 = userID;
+			  console.log('player 2 updated: ' + player2);
   			  break;
 			case '3️⃣':
   			  player3 = userID;
+		  	  console.log('player 3 updated: ' + player3);
   			  break;
   			case '4️⃣':
   			  player4 = userID;
+			  console.log('player 4 updated: ' + player4);
   			  break;
 			case '5️⃣':
   			  player5 = userID;
+			  console.log('player 5 updated: ' + player5);
   			  break;
 			case '6️⃣':
   			  player6 = userID;
+			  console.log('player 6 updated: ' + player6);
   			  break;
 			case '🪙':
   			  game_name = 'coinflip';
+			  console.log('game name updated: ' + game_name);
   			  break;
 			case '#️⃣':
-  			  game_name = 'tictactoe';
+  			  game_name = 'tictactoe';\
+			  console.log('game name updated: ' + game_name);
   			  break;
 		}
 		database_return.edit('Channel ID: ' + channel + ' | ' + 'Game Name: ' + game_name + ' | ' + 'Game Status: ' + game_status + ' | ' + 'Player 1: ' + player1 + ' | ' + 'Player 2: ' + player2 + ' | ' + 'Player 3: ' + player3 + ' | '  + 'Player 4: ' + player4 + ' | ' + 'Player 5: ' + player5 + ' | ' + 'Player 6: ' + player6 + ' | ' + 'Player 1 Bet: ' + player1_bet + ' | ' + 'Player 2 Bet: ' + player2_bet + ' | ' + 'Player 3 Bet: ' + player3_bet + ' | '  + 'Player 4 Bet: ' + player4_bet + ' | ' + 'Player 5 Bet: ' + player5_bet + ' | ' + 'Player 6 Bet: ' + player6_bet + ' | ')
