@@ -83,22 +83,100 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 	console.log('UserID: ' + userID); // embedRelations[2]
 	console.log('ChannelID: ' + active_channel); // embedRelations[3]
 	// cache gamestate updates
+	var channel = active_channel;
+	var game_name='game menu';
+	var game_status='end';
 	var player1='';
 	var player2='';
 	var player3='';
 	var player4='';
 	var player5='';
 	var player6='';
-	
+	var player1_bet='';
+	var player2_bet='';
+	var player3_bet='';
+	var player4_bet='';
+	var player5_bet='';
+	var player6_bet='';
 	// 
 	var database_return = fetch_messages(active_channel);
 	if (database_return == 'not found'){
-		game_log_channel.send('Channel ID: ' + active_channel + ' | '
+		game_log_channel.send('Channel ID: ' + channel + ' | ' + 'Game Name: ' + game_name + ' | ' + 'Game Status: ' + game_status + ' | ' + 'Player 1: ' + player1 + ' | ' + 'Player 2: ' + player2 + ' | ' + 'Player 3: ' + player3 + ' | '  + 'Player 4: ' + player4 + ' | ' + 'Player 5: ' + player5 + ' | ' + 'Player 6: ' + player6 + ' | ' + 'Player 1 Bet: ' + player1_bet + ' | ' + 'Player 2 Bet: ' + player2_bet + ' | ' + 'Player 3 Bet: ' + player3_bet + ' | '  + 'Player 4 Bet: ' + player4_bet + ' | ' + 'Player 5 Bet: ' + player5_bet + ' | ' + 'Player 6 Bet: ' + player6_bet + ' | ');                 
 	}
 	else {
 		// retrieve database information
+		channel = (database_return.split('|')[0]).split('Channel ID: ').join('').split(' ').join('');
+		database_return = database_return.split(database_return.split('|')[0]+'|').join('');
+		
+		game_name = (database_return.split('|')[0]).split('Game Name: ').join('').split(' ').join('');
+		database_return = database_return.split(database_return.split('|')[0]+'|').join('');
+		
+		game_status = (database_return.split('|')[0]).split('Game Status: ').join('').split(' ').join('');
+		database_return = database_return.split(database_return.split('|')[0]+'|').join('');
+		
+		player1 = (database_return.split('|')[0]).split('Player 1: ').join('').split(' ').join('');
+		database_return = database_return.split(database_return.split('|')[0]+'|').join('');
+		
+		player2 = (database_return.split('|')[0]).split('Player 2: ').join('').split(' ').join('');
+		database_return = database_return.split(database_return.split('|')[0]+'|').join('');
+		
+		player3 = (database_return.split('|')[0]).split('Player 3: ').join('').split(' ').join('');
+		database_return = database_return.split(database_return.split('|')[0]+'|').join('');
+		
+		player4 = (database_return.split('|')[0]).split('Player 4: ').join('').split(' ').join('');
+		database_return = database_return.split(database_return.split('|')[0]+'|').join('');
+		
+		player5 = (database_return.split('|')[0]).split('Player 5: ').join('').split(' ').join('');
+		database_return = database_return.split(database_return.split('|')[0]+'|').join('');
+		
+		player6 = (database_return.split('|')[0]).split('Player 6: ').join('').split(' ').join('');
+		database_return = database_return.split(database_return.split('|')[0]+'|').join('');
+		
+		player1_bet = (database_return.split('|')[0]).split('Player 1 Bet: ').join('').split(' ').join('');
+		database_return = database_return.split(database_return.split('|')[0]+'|').join('');
+		
+		player2_bet = (database_return.split('|')[0]).split('Player 2 Bet: ').join('').split(' ').join('');
+		database_return = database_return.split(database_return.split('|')[0]+'|').join('');
+		
+		player3_bet = (database_return.split('|')[0]).split('Player 3 Bet: ').join('').split(' ').join('');
+		database_return = database_return.split(database_return.split('|')[0]+'|').join('');
+		
+		player4_bet = (database_return.split('|')[0]).split('Player 4 Bet: ').join('').split(' ').join('');
+		database_return = database_return.split(database_return.split('|')[0]+'|').join('');
+		
+		player5_bet = (database_return.split('|')[0]).split('Player 5 Bet: ').join('').split(' ').join('');
+		database_return = database_return.split(database_return.split('|')[0]+'|').join('');
+		
+		player6_bet = (database_return.split('|')[0]).split('Player 6 Bet: ').join('').split(' ').join('');
+		database_return = database_return.split(database_return.split('|')[0]+'|').join('');
 		
 		// overwrite database information
+		switch (emojiName) {
+  			case '1️⃣':
+  			  player1 = userID;
+  			  break;
+			case '2️⃣':
+  			  player2 = userID;
+  			  break;
+			case '3️⃣':
+  			  player3 = userID;
+  			  break;
+  			case '4️⃣':
+  			  player4 = userID;
+  			  break;
+			case '5️⃣':
+  			  player5 = userID;
+  			  break;
+			case '6️⃣':
+  			  player6 = userID;
+  			  break;
+			case '🪙':
+  			  game_name = 'coinflip';
+  			  break;
+			case '#️⃣':
+  			  game_name = 'tictactoe';
+  			  break;
+		}
 		database_return.edit()
 	}
 }
