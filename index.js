@@ -100,15 +100,9 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 	var player6_bet='';
 	// 
 	var database_return = await fetch_messages(active_channel);
-	if (database_return == 'not defined'){
-		console.log('database_return = not defined');
-		return;
-	}
 	var database_return_id;
-	console.log('fetched messages');
 	console.log(database_return);
-	console.log(database_return[0]);
-	console.log(database_return[1]);
+	console.log('fetched');
 	if (database_return != 'not found'){
 		database_return_id = database_return[1];
 		database_return = database_return[0];
