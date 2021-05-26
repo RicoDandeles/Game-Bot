@@ -232,33 +232,29 @@ function fetch_messages(searched_channel_id){
 	var found_msgContent = '';
 	var status = 'searching';
 	console.log(status);
-	do{
 	client.channels.cache.get(game_log_channel).messages.fetch({ limit: 10 })
 		.then(messages => {
 			var keys = Array.from(messages.keys());
-			for ( var i=0; i < keys.length; i++){
-				console.log('iterating through messages');
-				client.channels.cache.get(game_log_channel).messages.fetch(keys[i])
-					.then(msg => {
-						msgContent = msg.content;
-						if (msgContent === undefined){
-							msgContent = 'undefined';
-							console.log('undefined message');
-						}
-						else if (msgContent.includes(searched_channel_id)){
-							console.log('channel record found in logs');
-							msgID = msg.id
-							found_msgContent = msgContent
-							// console.log(msgContent);
-							status = 'found';
-							// return [ status, msgContent, msgID ];
-						}	
-					});
-			}
-			console.log('test 1: ' + status);
-			status = 'not found';
 		});
-	}while(status == 'searching');
+	for ( var i=0; i < keys.length; i++){
+		console.log('iterating through messages');
+		client.channels.cache.get(game_log_channel).messages.fetch(keys[i])
+			.then(msg => {
+				msgContent = msg.content;
+				if (msgContent === undefined){
+					msgContent = 'undefined';
+					console.log('undefined message');
+				}
+				else if (msgContent.includes(searched_channel_id)){
+					console.log('channel record found in logs');
+					msgID = msg.id
+					found_msgContent = msgContent
+					// console.log(msgContent);
+					status = 'found';
+					// return [ status, msgContent, msgID ];
+				}	
+			});
+	}
 	console.log('test 2: ' + status);
 	if (status == 'found'){
 		console.log(found_msgContent);
