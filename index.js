@@ -178,7 +178,7 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 			  console.log('game name updated: ' + game_name);
   			  break;
 			case '#️⃣':
-  			  game_name = 'tictactoe';\
+  			  game_name = 'tictactoe';
 			  console.log('game name updated: ' + game_name);
   			  break;
 		}
