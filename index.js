@@ -101,11 +101,13 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 	// 
 	var database_return = await fetch_messages(active_channel);
 	var database_return_id;
+	var database_return_msg;
 	console.log(database_return);
 	console.log('fetched');
 	if (database_return != 'not found'){
-		database_return_id = database_return[1];
-		database_return = database_return[0];
+		database_return_msg = database_return[0]
+		database_return_id = database_return[2];
+		database_return = database_return[1];
 		// retrieve database information
 		channel = (database_return.split('|')[0]).split('Channel ID: ').join('').split(' ').join('');
 		database_return = database_return.split(database_return.split('|')[0]+'|').join('');
@@ -228,8 +230,6 @@ function fetch_messages(searched_channel_id){
 	var msgContent = '';
 	var msgID = '';
 	var found_msgContent = '';
-	var status = 'searching';
-	var keys = 'not defined';
 	console.log(status);
 	client.channels.cache.get(game_log_channel).messages.fetch({ limit: 10 })
 		.then(messages => {
@@ -246,25 +246,12 @@ function fetch_messages(searched_channel_id){
 					}
 					else if (msgContent.includes(searched_channel_id)){
 						console.log('channel record found in logs');
-						msgID = msg.id;
-						found_msgContent = msgContent;
-						status = 'found';
-						return [ status, found_msgContent, msgID ];
+						return [ msg, msgContent, msg.id ];
 					}
-					console.log('test 1: ' + status);
 				});
-			console.log('test 2: ' + status);
 			}
-		console.log('test 3: ' + status);
 		});
-		console.log('test 4: ' + status);
-		if (status == 'found'){
-			console.log(found_msgContent);
-			return [ found_msgContent, msgID ];
-		}
-		else{
-			return 'not found';
-		}
+	return 'not found';
 };
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
