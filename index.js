@@ -198,6 +198,7 @@ function fetch_messages(searched_channel_id){
 						else if (msgContent.includes(searched_channel_id)){
 							console.log('channel record found in logs');
 							return msg;
+							console.log('message returned');
 							status = 'success';
 						}	
 					});
