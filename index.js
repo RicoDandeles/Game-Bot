@@ -255,12 +255,15 @@ function fetch_messages(searched_channel_id){
 						msgID = msg.id;
 						found_msgContent = msgContent;
 						status = 'found';
-						return [ found_msgContent, msgID ];
-					}	
+						return [ status, found_msgContent, msgID ];
+					}
+					console.log('test 1: ' + status);
 				});
-		}
-		console.log('test 2: ' + status);
+			console.log('test 2: ' + status);
+			}
+		console.log('test 3: ' + status);
 		});
+		console.log('test 4: ' + status);
 		if (status == 'found'){
 			console.log(found_msgContent);
 			return [ found_msgContent, msgID ];
