@@ -100,6 +100,7 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 	var player6_bet='';
 	// 
 	var database_return = fetch_messages(active_channel);
+	console.log(database_return[0]);
 	var database_return_id = database_return[1];
 	if (database_return[0] != ''){
 		database_return = database_return[0];
@@ -237,7 +238,6 @@ function fetch_messages(searched_channel_id){
 						}
 						else if (msgContent.includes(searched_channel_id)){
 							console.log('channel record found in logs');
-							console.log(msgContent);
 							msgID = msg.id
 							return msgContent, msgID;
 						}	
