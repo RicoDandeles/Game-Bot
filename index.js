@@ -249,11 +249,10 @@ function fetch_messages(searched_channel_id){
 					}
 					else if (msgContent.includes(searched_channel_id)){
 						console.log('channel record found in logs');
-						msgID = msg.id
-						found_msgContent = msgContent
-						// console.log(msgContent);
+						msgID = msg.id;
+						found_msgContent = msgContent;
 						status = 'found';
-						// return [ status, msgContent, msgID ];
+						return [ found_msgContent, msgID ];
 					}	
 				});
 		}
