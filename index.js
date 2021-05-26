@@ -226,7 +226,7 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Fetch Messages
 
-function fetch_messages(searched_channel_id){
+async function fetch_messages(searched_channel_id){
 	client.channels.cache.get(game_log_channel).messages.fetch({ limit: 10 })
 		.then(messages => {
 			keys = Array.from(messages.keys());
@@ -247,9 +247,11 @@ function fetch_messages(searched_channel_id){
 					});
 			}
 		});
+	await sleep(200);
 	return 'not found';
 };
 	
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Tools
 function generateSerial() {
@@ -268,6 +270,10 @@ function generateSerial() {
 
 function randomInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Player Slots
