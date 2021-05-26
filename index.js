@@ -78,7 +78,7 @@ client.on('messageReactionAdd', (reaction, user) => {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Embed Reaction Relations
 async function embedRelations(embedTitle, emojiName, userID, active_channel){
-	var game_log_channel = client.channels.get(game_log_channel)
+	var game_log_channel = client.channels.fetch(game_log_channel)
 	console.log('Embed Title: ' + embedTitle); // embedRelations[0]
 	console.log('Emoji: ' + emojiName); // embedRelations[1]
 	console.log('UserID: ' + userID); // embedRelations[2]
