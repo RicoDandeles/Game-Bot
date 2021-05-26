@@ -243,16 +243,14 @@ function fetch_messages(searched_channel_id){
 							return status, msgContent, msgID;
 						}	
 					});
-				if (status == 'found'){
-					console.log('2!'+ msgContent + '\n\n' + msgID);
-					return msgContent, msgID;
-				};
 			}
-			console.log('3!'+ msgContent + '\n\n' + msgID);
-			return msgContent, msgID;
+			console.log('2!'+ msgContent + '\n\n' + msgID);
+			return status, msgContent, msgID;
 		});
-	console.log('4!'+ msgContent + '\n\n' + msgID);
-	return msgContent, msgID;
+	if (status == 'found'){
+		console.log('3!'+ msgContent + '\n\n' + msgID);
+		return msgContent, msgID;
+	};
 };
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
