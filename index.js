@@ -243,12 +243,12 @@ async function fetch_messages2(searched_channel_id){
 async function fetch_messages3(messages, keys, searched_channel_id){
 			for ( var i=0; i < keys.length; i++){
 				console.log('iterating through messages');
-				return fetch_messages4(messages, keys, searched_channel_id);
+				return fetch_messages4(i, messages, keys, searched_channel_id);
 			}
 			return 'not found';
 }
 
-async function fetch_messages4(messages, keys, searched_channel_id){
+async function fetch_messages4(i, messages, keys, searched_channel_id){
 				client.channels.cache.get(game_log_channel).messages.fetch(keys[i])
 					.then(msg => {
 						var msgContent = msg.content;
