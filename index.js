@@ -189,7 +189,7 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 			  console.log('game name updated: ' + game_name);
   			  break;
 		}
-		database_return_id.edit('Channel ID: ' + channel + ' | ' + 'Game Name: ' + game_name + ' | ' + 'Game Status: ' + game_status + ' | ' + 'Player 1: ' + player1 + ' | ' + 'Player 2: ' + player2 + ' | ' + 'Player 3: ' + player3 + ' | '  + 'Player 4: ' + player4 + ' | ' + 'Player 5: ' + player5 + ' | ' + 'Player 6: ' + player6 + ' | ' + 'Player 1 Bet: ' + player1_bet + ' | ' + 'Player 2 Bet: ' + player2_bet + ' | ' + 'Player 3 Bet: ' + player3_bet + ' | '  + 'Player 4 Bet: ' + player4_bet + ' | ' + 'Player 5 Bet: ' + player5_bet + ' | ' + 'Player 6 Bet: ' + player6_bet + ' | ')
+		database_return_msg.edit('Channel ID: ' + channel + ' | ' + 'Game Name: ' + game_name + ' | ' + 'Game Status: ' + game_status + ' | ' + 'Player 1: ' + player1 + ' | ' + 'Player 2: ' + player2 + ' | ' + 'Player 3: ' + player3 + ' | '  + 'Player 4: ' + player4 + ' | ' + 'Player 5: ' + player5 + ' | ' + 'Player 6: ' + player6 + ' | ' + 'Player 1 Bet: ' + player1_bet + ' | ' + 'Player 2 Bet: ' + player2_bet + ' | ' + 'Player 3 Bet: ' + player3_bet + ' | '  + 'Player 4 Bet: ' + player4_bet + ' | ' + 'Player 5 Bet: ' + player5_bet + ' | ' + 'Player 6 Bet: ' + player6_bet + ' | ')
 		                 
 	}
 	else {
