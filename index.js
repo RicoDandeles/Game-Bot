@@ -17,8 +17,8 @@ const { Client, Permissions } = require('discord.js');
 const client = new Discord.Client();
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // My Variables
-const discordusername = 'Game Bot#6808';
-const discordtoken = 'ODQ1NzMxMzA2NDk4MjkzODQx.YKlOqA.fMKzHcVkshepd1pHgPVVEUYKDEQ';
+const discordusername = 'Game Bot#5576';
+const discordtoken = 'ODQ4MDc0NDc1NDI5ODIyNDc0.YLHU5w.lF-NQ2vFiMCp9nmFQpQSTk-JCO0';
 const discordid = '848074475429822474';
 const serverId = '848036294713016340';
 const guild = client.channels.cache.get('848036294713016340');
