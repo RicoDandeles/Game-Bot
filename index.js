@@ -19,12 +19,12 @@ const client = new Discord.Client();
 // My Variables
 const discordusername = 'Game Bot#6808';
 const discordtoken = 'ODQ1NzMxMzA2NDk4MjkzODQx.YKlOqA.fMKzHcVkshepd1pHgPVVEUYKDEQ';
-const discordid = '845731306498293841';
-const serverId = '844644376826085426';
-const guild = client.channels.cache.get('844644376826085426');
-const role = ('845381979205140490');
+const discordid = '848074475429822474';
+const serverId = '848036294713016340';
+const guild = client.channels.cache.get('848036294713016340');
+// const role = ('845381979205140490'); //member?
 const channel_prefix = 'lobby';
-const game_log_channel = '846170644978597898';
+const game_log_channel = '848037262905049109';
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // On Ready Event
 client.on("ready", () => {
