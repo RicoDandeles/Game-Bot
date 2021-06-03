@@ -105,9 +105,9 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 	console.log(database_return);
 	console.log('fetched');
 	if (database_return != 'not found'){
-		database_return_msg = database_return[0]
-		database_return_id = database_return[2];
-		database_return = database_return[1];
+		database_return_msg = database_return;
+		database_return_id = database_return.id;
+		database_return = database_return.content;
 		// retrieve database information
 		channel = (database_return.split('|')[0]).split('Channel ID: ').join('').split(' ').join('');
 		database_return = database_return.split(database_return.split('|')[0]+'|').join('');
