@@ -227,35 +227,15 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 // Fetch Messages
 
 async function fetch_messages(searched_channel_id){
-   var result; 
-   await client.channels.cache.get(game_log_channel).messages.fetch({ limit: 10 })
-        .then(messages => {
-            keys = Array.from(messages.keys());
-            console.log(keys);
-            for ( var i=0; i < keys.length; i++){
-                console.log('iterating through messages');
-		result = fetch_messages2(game_log_channel, keys, i);
-                if (result[1] != undefined){
-			return result;
-		}
-            }
-        });
-    return 'not found';
-};
-
-async function fetch_messages2(game_log_channel, keys, i){
-	await client.channels.cache.get(game_log_channel).messages.fetch(keys[i])
-            .then(msg => {
-                var msgContent = msg.content;
-                if (msgContent === undefined){
-                    msgContent = 'undefined';
-                    console.log('undefined message');
-                }
-                else if (msgContent.includes(searched_channel_id)){
-                    	console.log('channel record found in logs');
-                    	return [ msg, msgContent, msg.id ];
-                }
-            });
+   	const gameLogChannel = client.channels.cache.get(game_log_channel);
+  	const logMessages = await gameLogChannel.messages.fetch({ limit: 10 });
+	
+  	const foundMessage = logMessages.find((msg) =>
+  	  msg.content.includes(searched_channel_id),
+  	);
+	console.log('Found Message: ' + foundMessage);
+	
+  	return foundMessage || 'not found';
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
