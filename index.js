@@ -227,42 +227,28 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 // Fetch Messages
 
 async function fetch_messages(searched_channel_id){
-	return fetch_messages2(searched_channel_id);
+    await client.channels.cache.get(game_log_channel).messages.fetch({ limit: 10 })
+        .then(messages => {
+            keys = Array.from(messages.keys());
+            console.log(keys);
+            for ( var i=0; i < keys.length; i++){
+                console.log('iterating through messages');
+                await client.channels.cache.get(game_log_channel).messages.fetch(keys[i])
+                    .then(msg => {
+                        var msgContent = msg.content;
+                        if (msgContent === undefined){
+                            msgContent = 'undefined';
+                            console.log('undefined message');
+                        }
+                        else if (msgContent.includes(searched_channel_id)){
+                            console.log('channel record found in logs');
+                            return [ msg, msgContent, msg.id ];
+                        }
+                    });
+            }
+        });
+    return 'not found';
 };
-	
-async function fetch_messages2(searched_channel_id){
-	client.channels.cache.get(game_log_channel).messages.fetch({ limit: 10 })
-		.then(messages => {
-			keys = Array.from(messages.keys());
-			console.log(keys);
-			return fetch_messages3(messages, keys, searched_channel_id);
-		});
-	return 'not found';
-}
-
-async function fetch_messages3(messages, keys, searched_channel_id){
-			for ( var i=0; i < keys.length; i++){
-				console.log('iterating through messages');
-				return fetch_messages4(i, messages, keys, searched_channel_id);
-			}
-			return 'not found';
-}
-
-async function fetch_messages4(i, messages, keys, searched_channel_id){
-				client.channels.cache.get(game_log_channel).messages.fetch(keys[i])
-					.then(msg => {
-						var msgContent = msg.content;
-						if (msgContent === undefined){
-							msgContent = 'undefined';
-							console.log('undefined message');
-						}
-						else if (msgContent.includes(searched_channel_id)){
-							console.log('channel record found in logs');
-							return [ msg, msgContent, msg.id ];
-						}
-					});
-				return 'not found';
-}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Tools
