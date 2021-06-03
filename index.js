@@ -102,9 +102,9 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 	var database_return = await fetch_messages(active_channel);
 	var database_return_id;
 	var database_return_msg;
-	console.log(database_return);
 	console.log('fetched');
 	if (database_return != 'not found'){
+		console.log('matched');
 		database_return_msg = database_return;
 		database_return_id = database_return.id;
 		database_return = database_return.content;
