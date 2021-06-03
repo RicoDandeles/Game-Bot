@@ -228,7 +228,7 @@ async function embedRelations(embedTitle, emojiName, userID, active_channel){
 
 async function fetch_messages(searched_channel_id){
    	const gameLogChannel = client.channels.cache.get(game_log_channel);
-  	const logMessages = await gameLogChannel.messages.fetch({ limit: 10 });
+  	const logMessages = await gameLogChannel.messages.fetch({ limit: 100 });
 	
   	const foundMessage = logMessages.find((msg) =>
   	  msg.content.includes(searched_channel_id),
