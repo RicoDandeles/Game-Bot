@@ -233,7 +233,6 @@ async function fetch_messages(searched_channel_id){
   	const foundMessage = logMessages.find((msg) =>
   	  msg.content.includes(searched_channel_id),
   	);
-	console.log('Found Message: ' + foundMessage);
 	
   	return foundMessage || 'not found';
 }
